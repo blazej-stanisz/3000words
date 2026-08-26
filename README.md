@@ -5,8 +5,7 @@ z tłumaczeniami na polski i przykładami użycia. Bez backendu, bez logowania �
 cały postęp zapisywany jest lokalnie w przeglądarce (IndexedDB).
 
 ## Uruchomienie
-
-
+**Otwórz** https://blazej-stanisz.github.io/AZ-900-Practice-Tests/
 
 ### Skąd biorą się dane
 
