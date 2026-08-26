@@ -1,0 +1,902 @@
+[
+  {
+    "en": "shop",
+    "pl": "sklep",
+    "ex": "The shop opens at nine in the morning.",
+    "exPl": "Sklep otwiera się o dziewiątej rano."
+  },
+  {
+    "en": "store",
+    "pl": "sklep / magazyn",
+    "ex": "This store sells everything you need.",
+    "exPl": "Ten sklep sprzedaje wszystko, czego potrzebujesz."
+  },
+  {
+    "en": "butcher's",
+    "pl": "sklep mięsny / rzeźnik",
+    "ex": "I bought fresh chicken at the butcher's.",
+    "exPl": "Kupiłem świeżego kurczaka w sklepie mięsnym."
+  },
+  {
+    "en": "chemist's",
+    "pl": "apteka / drogeria",
+    "ex": "You can buy painkillers at the chemist's.",
+    "exPl": "Możesz kupić środki przeciwbólowe w aptece."
+  },
+  {
+    "en": "bakery",
+    "pl": "piekarnia",
+    "ex": "She buys fresh bread from the bakery every morning.",
+    "exPl": "Ona kupuje świeży chleb w piekarni każdego ranka."
+  },
+  {
+    "en": "newsagent's",
+    "pl": "kiosk z gazetami",
+    "ex": "I picked up a magazine at the newsagent's.",
+    "exPl": "Kupiłem magazyn w kiosku z gazetami."
+  },
+  {
+    "en": "department store",
+    "pl": "dom towarowy",
+    "ex": "The department store has five floors of clothing.",
+    "exPl": "Dom towarowy ma pięć pięter z odzieżą."
+  },
+  {
+    "en": "supermarket",
+    "pl": "supermarket",
+    "ex": "We do the weekly shop at the supermarket.",
+    "exPl": "Robimy tygodniowe zakupy w supermarkecie."
+  },
+  {
+    "en": "market",
+    "pl": "targ / rynek",
+    "ex": "Fresh vegetables are cheaper at the market.",
+    "exPl": "Świeże warzywa są tańsze na targu."
+  },
+  {
+    "en": "boutique",
+    "pl": "butik",
+    "ex": "She found a beautiful dress in a small boutique.",
+    "exPl": "Znalazła piękną sukienkę w małym butiku."
+  },
+  {
+    "en": "off-licence",
+    "pl": "sklep monopolowy",
+    "ex": "He stopped at the off-licence to buy wine.",
+    "exPl": "Zatrzymał się w sklepie monopolowym, żeby kupić wino."
+  },
+  {
+    "en": "florist's",
+    "pl": "kwiaciarnia",
+    "ex": "I ordered a bouquet from the florist's.",
+    "exPl": "Zamówiłem bukiet w kwiaciarni."
+  },
+  {
+    "en": "jeweller's",
+    "pl": "jubiler / sklep jubilerski",
+    "ex": "She bought a silver necklace at the jeweller's.",
+    "exPl": "Kupiła srebrny naszyjnik u jubilera."
+  },
+  {
+    "en": "charity shop",
+    "pl": "sklep charytatywny / second-hand",
+    "ex": "I found a great coat in a charity shop.",
+    "exPl": "Znalazłem świetny płaszcz w sklepie charytatywnym."
+  },
+  {
+    "en": "shopping centre",
+    "pl": "centrum handlowe",
+    "ex": "The new shopping centre has over a hundred shops.",
+    "exPl": "Nowe centrum handlowe ma ponad sto sklepów."
+  },
+  {
+    "en": "aisle",
+    "pl": "alejka (w sklepie)",
+    "ex": "The cereal is in the third aisle on the left.",
+    "exPl": "Płatki śniadaniowe są w trzeciej alejce po lewej."
+  },
+  {
+    "en": "checkout",
+    "pl": "kasa (w sklepie)",
+    "ex": "There was a long queue at the checkout.",
+    "exPl": "Przy kasie stała długa kolejka."
+  },
+  {
+    "en": "basket",
+    "pl": "koszyk (zakupowy)",
+    "ex": "I only need a basket for a few items.",
+    "exPl": "Potrzebuję tylko koszyka na kilka rzeczy."
+  },
+  {
+    "en": "to shop",
+    "pl": "robić zakupy",
+    "ex": "She loves to shop for new shoes.",
+    "exPl": "Ona uwielbia robić zakupy i szukać nowych butów."
+  },
+  {
+    "en": "to buy",
+    "pl": "kupować / kupić",
+    "ex": "I need to buy some milk on the way home.",
+    "exPl": "Muszę kupić trochę mleka w drodze do domu."
+  },
+  {
+    "en": "to sell",
+    "pl": "sprzedawać / sprzedać",
+    "ex": "They sell organic fruit and vegetables here.",
+    "exPl": "Sprzedają tu ekologiczne owoce i warzywa."
+  },
+  {
+    "en": "to spend",
+    "pl": "wydawać / wydać (pieniądze)",
+    "ex": "He spends too much money on clothes.",
+    "exPl": "On wydaje za dużo pieniędzy na ubrania."
+  },
+  {
+    "en": "grocery",
+    "pl": "artykuł spożywczy",
+    "ex": "I need to pick up a few groceries after work.",
+    "exPl": "Muszę kupić kilka artykułów spożywczych po pracy."
+  },
+  {
+    "en": "dairy",
+    "pl": "nabiał",
+    "ex": "Milk and cheese are in the dairy section.",
+    "exPl": "Mleko i ser są w dziale nabiałowym."
+  },
+  {
+    "en": "frozen food",
+    "pl": "mrożonki / żywność mrożona",
+    "ex": "Frozen food is convenient but not always healthy.",
+    "exPl": "Mrożonki są wygodne, ale nie zawsze zdrowe."
+  },
+  {
+    "en": "tin",
+    "pl": "puszka (konserwa)",
+    "ex": "She opened a tin of tomatoes for the sauce.",
+    "exPl": "Otworzyła puszkę pomidorów do sosu."
+  },
+  {
+    "en": "expiry date",
+    "pl": "data ważności",
+    "ex": "Always check the expiry date before you buy.",
+    "exPl": "Zawsze sprawdzaj datę ważności przed zakupem."
+  },
+  {
+    "en": "organic",
+    "pl": "ekologiczny / organiczny",
+    "ex": "Organic products are usually more expensive.",
+    "exPl": "Produkty ekologiczne są zazwyczaj droższe."
+  },
+  {
+    "en": "jumper",
+    "pl": "sweter",
+    "ex": "She wore a warm jumper because it was cold.",
+    "exPl": "Miała na sobie ciepły sweter, bo było zimno."
+  },
+  {
+    "en": "trainers",
+    "pl": "buty sportowe / trampki",
+    "ex": "He bought a new pair of trainers for the gym.",
+    "exPl": "Kupił nową parę butów sportowych do siłowni."
+  },
+  {
+    "en": "trousers",
+    "pl": "spodnie",
+    "ex": "These trousers are too tight around the waist.",
+    "exPl": "Te spodnie są za ciasne w pasie."
+  },
+  {
+    "en": "coat",
+    "pl": "płaszcz",
+    "ex": "You'll need a warm coat in winter.",
+    "exPl": "Będziesz potrzebować ciepłego płaszcza w zimie."
+  },
+  {
+    "en": "jacket",
+    "pl": "kurtka / marynarka",
+    "ex": "He wore a smart jacket to the interview.",
+    "exPl": "Miał na sobie elegancką marynarkę na rozmowie kwalifikacyjnej."
+  },
+  {
+    "en": "dress",
+    "pl": "sukienka",
+    "ex": "She bought a red dress for the party.",
+    "exPl": "Kupiła czerwoną sukienkę na przyjęcie."
+  },
+  {
+    "en": "skirt",
+    "pl": "spódnica",
+    "ex": "She paired the skirt with a white blouse.",
+    "exPl": "Połączyła spódnicę z białą bluzką."
+  },
+  {
+    "en": "shirt",
+    "pl": "koszula",
+    "ex": "He ironed his shirt before the meeting.",
+    "exPl": "Wyprasował koszulę przed spotkaniem."
+  },
+  {
+    "en": "blouse",
+    "pl": "bluzka (damska)",
+    "ex": "This silk blouse goes well with those trousers.",
+    "exPl": "Ta jedwabna bluzka dobrze pasuje do tych spodni."
+  },
+  {
+    "en": "suit",
+    "pl": "garnitur / kostium",
+    "ex": "He bought a new suit for the wedding.",
+    "exPl": "Kupił nowy garnitur na wesele."
+  },
+  {
+    "en": "underwear",
+    "pl": "bielizna",
+    "ex": "She bought a pack of cotton underwear.",
+    "exPl": "Kupiła paczkę bawełnianej bielizny."
+  },
+  {
+    "en": "socks",
+    "pl": "skarpety",
+    "ex": "He always loses one sock in the wash.",
+    "exPl": "On zawsze gubi jedną skarpetkę w praniu."
+  },
+  {
+    "en": "boots",
+    "pl": "buty (wysokie) / botki",
+    "ex": "Her leather boots are perfect for autumn.",
+    "exPl": "Jej skórzane botki są idealne na jesień."
+  },
+  {
+    "en": "heels",
+    "pl": "szpilki / buty na obcasie",
+    "ex": "She wore heels to the formal dinner.",
+    "exPl": "Nosiła szpilki na uroczystej kolacji."
+  },
+  {
+    "en": "size",
+    "pl": "rozmiar",
+    "ex": "What size do you take in shoes?",
+    "exPl": "Jaki rozmiar nosisz w butach?"
+  },
+  {
+    "en": "to try on",
+    "pl": "przymierzać / przymierzyć",
+    "ex": "Can I try on this jacket, please?",
+    "exPl": "Czy mogę przymierzyć tę kurtkę?"
+  },
+  {
+    "en": "fitting room",
+    "pl": "przymierzalnia",
+    "ex": "The fitting room is at the back of the store.",
+    "exPl": "Przymierzalnia jest z tyłu sklepu."
+  },
+  {
+    "en": "to fit",
+    "pl": "pasować (na kogoś)",
+    "ex": "These jeans don't fit me anymore.",
+    "exPl": "Te dżinsy już na mnie nie pasują."
+  },
+  {
+    "en": "loose",
+    "pl": "luźny (o ubraniu)",
+    "ex": "The trousers were a bit loose around the hips.",
+    "exPl": "Spodnie były trochę luźne w biodrach."
+  },
+  {
+    "en": "tight",
+    "pl": "ciasny / obcisły",
+    "ex": "This shirt is too tight across the shoulders.",
+    "exPl": "Ta koszula jest za ciasna w ramionach."
+  },
+  {
+    "en": "cotton",
+    "pl": "bawełna / bawełniany",
+    "ex": "I prefer cotton shirts because they breathe.",
+    "exPl": "Wolę koszule bawełniane, bo oddychają."
+  },
+  {
+    "en": "wool",
+    "pl": "wełna / wełniany",
+    "ex": "This scarf is made of pure wool.",
+    "exPl": "Ten szalik jest zrobiony z czystej wełny."
+  },
+  {
+    "en": "silk",
+    "pl": "jedwab / jedwabny",
+    "ex": "She wore a silk blouse to the opera.",
+    "exPl": "Nosiła jedwabną bluzkę do opery."
+  },
+  {
+    "en": "leather",
+    "pl": "skóra (materiał) / skórzany",
+    "ex": "His leather wallet is getting old.",
+    "exPl": "Jego skórzany portfel się starzeje."
+  },
+  {
+    "en": "denim",
+    "pl": "denim / dżinsowy",
+    "ex": "She wore a denim jacket over her dress.",
+    "exPl": "Miała na sobie dżinsową kurtkę narzuconą na sukienkę."
+  },
+  {
+    "en": "linen",
+    "pl": "len / lniany",
+    "ex": "Linen trousers are perfect for hot weather.",
+    "exPl": "Lniane spodnie są idealne na upał."
+  },
+  {
+    "en": "striped",
+    "pl": "w paski / w prążki",
+    "ex": "He wore a striped shirt to the beach.",
+    "exPl": "Miał na sobie koszulę w paski na plaży."
+  },
+  {
+    "en": "checked",
+    "pl": "w kratę",
+    "ex": "She bought a checked scarf at the market.",
+    "exPl": "Kupiła szalik w kratę na targu."
+  },
+  {
+    "en": "plain",
+    "pl": "gładki / jednokolorowy",
+    "ex": "I prefer plain colours to patterns.",
+    "exPl": "Wolę jednolite kolory od wzorów."
+  },
+  {
+    "en": "patterned",
+    "pl": "we wzory / wzorzysty",
+    "ex": "She chose a patterned blouse for the party.",
+    "exPl": "Wybrała bluzkę we wzory na przyjęcie."
+  },
+  {
+    "en": "cash",
+    "pl": "gotówka",
+    "ex": "Do you have enough cash to pay the bill?",
+    "exPl": "Czy masz wystarczająco gotówki, żeby zapłacić rachunek?"
+  },
+  {
+    "en": "card",
+    "pl": "karta (płatnicza)",
+    "ex": "Can I pay by card or is it cash only?",
+    "exPl": "Czy mogę zapłacić kartą, czy tylko gotówką?"
+  },
+  {
+    "en": "receipt",
+    "pl": "paragon",
+    "ex": "Keep the receipt in case you return the item.",
+    "exPl": "Zachowaj paragon na wypadek zwrotu towaru."
+  },
+  {
+    "en": "change",
+    "pl": "reszta (pieniądze)",
+    "ex": "The cashier gave me the wrong change.",
+    "exPl": "Kasjer dał mi złą resztę."
+  },
+  {
+    "en": "price tag",
+    "pl": "metka z ceną",
+    "ex": "The price tag says twenty pounds.",
+    "exPl": "Metka z ceną mówi dwadzieścia funtów."
+  },
+  {
+    "en": "refund",
+    "pl": "zwrot pieniędzy",
+    "ex": "I asked for a refund because the item was faulty.",
+    "exPl": "Poprosiłem o zwrot pieniędzy, bo towar był wadliwy."
+  },
+  {
+    "en": "discount",
+    "pl": "zniżka / rabat",
+    "ex": "Students get a ten percent discount here.",
+    "exPl": "Studenci otrzymują tutaj dziesięć procent zniżki."
+  },
+  {
+    "en": "sale",
+    "pl": "wyprzedaż",
+    "ex": "I bought this coat in the January sale.",
+    "exPl": "Kupiłem ten płaszcz podczas wyprzedaży styczniowej."
+  },
+  {
+    "en": "bargain",
+    "pl": "okazja / dobra cena",
+    "ex": "That jacket was a real bargain at fifteen pounds.",
+    "exPl": "Ta kurtka była prawdziwą okazją za piętnaście funtów."
+  },
+  {
+    "en": "offer",
+    "pl": "oferta specjalna / promocja",
+    "ex": "There's a buy-one-get-one-free offer this week.",
+    "exPl": "W tym tygodniu jest oferta kup jeden, drugi gratis."
+  },
+  {
+    "en": "voucher",
+    "pl": "bon / kupon",
+    "ex": "She used a voucher to get money off her order.",
+    "exPl": "Użyła kuponu, żeby dostać zniżkę na zamówienie."
+  },
+  {
+    "en": "loyalty card",
+    "pl": "karta lojalnościowa",
+    "ex": "I collect points on my loyalty card every time I shop.",
+    "exPl": "Zbieram punkty na karcie lojalnościowej za każdym razem, gdy robię zakupy."
+  },
+  {
+    "en": "till",
+    "pl": "kasa (urządzenie) / kasa fiskalna",
+    "ex": "Please pay at the till near the exit.",
+    "exPl": "Proszę zapłacić przy kasie przy wyjściu."
+  },
+  {
+    "en": "cashier",
+    "pl": "kasjer / kasjerka",
+    "ex": "The cashier scanned all the items quickly.",
+    "exPl": "Kasjerka szybko zeskanowała wszystkie produkty."
+  },
+  {
+    "en": "to pay",
+    "pl": "płacić / zapłacić",
+    "ex": "Who is going to pay for the shopping?",
+    "exPl": "Kto zapłaci za zakupy?"
+  },
+  {
+    "en": "to charge",
+    "pl": "pobierać opłatę / obciążać",
+    "ex": "They charge extra for delivery at weekends.",
+    "exPl": "Pobierają dodatkową opłatę za dostawę w weekendy."
+  },
+  {
+    "en": "VAT",
+    "pl": "VAT / podatek od towarów i usług",
+    "ex": "The price includes VAT.",
+    "exPl": "Cena zawiera podatek VAT."
+  },
+  {
+    "en": "bank account",
+    "pl": "konto bankowe",
+    "ex": "I need to open a bank account in the UK.",
+    "exPl": "Muszę otworzyć konto bankowe w Wielkiej Brytanii."
+  },
+  {
+    "en": "savings account",
+    "pl": "konto oszczędnościowe",
+    "ex": "She puts money into her savings account each month.",
+    "exPl": "Ona wpłaca pieniądze na konto oszczędnościowe każdego miesiąca."
+  },
+  {
+    "en": "current account",
+    "pl": "rachunek bieżący",
+    "ex": "My salary goes into my current account.",
+    "exPl": "Moja pensja trafia na rachunek bieżący."
+  },
+  {
+    "en": "loan",
+    "pl": "pożyczka / kredyt",
+    "ex": "They took out a loan to buy the car.",
+    "exPl": "Wzięli pożyczkę, żeby kupić samochód."
+  },
+  {
+    "en": "mortgage",
+    "pl": "kredyt hipoteczny",
+    "ex": "They are paying off their mortgage for thirty years.",
+    "exPl": "Spłacają kredyt hipoteczny przez trzydzieści lat."
+  },
+  {
+    "en": "interest",
+    "pl": "odsetki / oprocentowanie",
+    "ex": "The interest rate on this loan is very high.",
+    "exPl": "Oprocentowanie tej pożyczki jest bardzo wysokie."
+  },
+  {
+    "en": "savings",
+    "pl": "oszczędności",
+    "ex": "He used his savings to pay for the holiday.",
+    "exPl": "Użył oszczędności, żeby zapłacić za wakacje."
+  },
+  {
+    "en": "to withdraw",
+    "pl": "wypłacać / wypłacić (pieniądze)",
+    "ex": "She withdrew two hundred pounds from the ATM.",
+    "exPl": "Wypłaciła dwieście funtów z bankomatu."
+  },
+  {
+    "en": "to deposit",
+    "pl": "wpłacać / wpłacić (pieniądze)",
+    "ex": "He deposited his wages into the bank.",
+    "exPl": "Wpłacił swoją wypłatę do banku."
+  },
+  {
+    "en": "ATM",
+    "pl": "bankomat",
+    "ex": "Is there an ATM near here?",
+    "exPl": "Czy jest tu gdzieś bankomat?"
+  },
+  {
+    "en": "PIN",
+    "pl": "PIN / numer PIN",
+    "ex": "Never share your PIN with anyone.",
+    "exPl": "Nigdy nie udostępniaj nikomu swojego numeru PIN."
+  },
+  {
+    "en": "overdraft",
+    "pl": "debet / przekroczenie salda",
+    "ex": "I went into my overdraft at the end of the month.",
+    "exPl": "Na koniec miesiąca wpadłem w debet."
+  },
+  {
+    "en": "statement",
+    "pl": "wyciąg bankowy",
+    "ex": "Check your bank statement for any unusual charges.",
+    "exPl": "Sprawdź wyciąg bankowy w poszukiwaniu podejrzanych opłat."
+  },
+  {
+    "en": "expensive",
+    "pl": "drogi / kosztowny",
+    "ex": "The restaurant was very expensive but worth it.",
+    "exPl": "Restauracja była bardzo droga, ale warta swojej ceny."
+  },
+  {
+    "en": "cheap",
+    "pl": "tani / niedrogi",
+    "ex": "This supermarket is much cheaper than the others.",
+    "exPl": "Ten supermarket jest o wiele tańszy niż inne."
+  },
+  {
+    "en": "affordable",
+    "pl": "przystępny cenowo / niedorogi",
+    "ex": "They offer affordable prices for quality goods.",
+    "exPl": "Oferują przystępne ceny za dobrej jakości towary."
+  },
+  {
+    "en": "to afford",
+    "pl": "pozwolić sobie (finansowo)",
+    "ex": "We cannot afford a holiday abroad this year.",
+    "exPl": "Nie stać nas w tym roku na zagraniczne wakacje."
+  },
+  {
+    "en": "value for money",
+    "pl": "dobry stosunek jakości do ceny",
+    "ex": "This hotel offers great value for money.",
+    "exPl": "Ten hotel oferuje świetny stosunek jakości do ceny."
+  },
+  {
+    "en": "overpriced",
+    "pl": "zbyt drogi / wygórowany cenowo",
+    "ex": "I think this handbag is completely overpriced.",
+    "exPl": "Uważam, że ta torebka jest kompletnie za droga."
+  },
+  {
+    "en": "price",
+    "pl": "cena",
+    "ex": "What's the price of this jacket?",
+    "exPl": "Jaka jest cena tej kurtki?"
+  },
+  {
+    "en": "cost",
+    "pl": "koszt / kosztować",
+    "ex": "How much does this coat cost?",
+    "exPl": "Ile kosztuje ten płaszcz?"
+  },
+  {
+    "en": "worth",
+    "pl": "wart / wartość",
+    "ex": "Is this laptop worth the price?",
+    "exPl": "Czy ten laptop jest wart swojej ceny?"
+  },
+  {
+    "en": "online shopping",
+    "pl": "zakupy online / zakupy przez internet",
+    "ex": "Online shopping has become very popular recently.",
+    "exPl": "Zakupy online stały się ostatnio bardzo popularne."
+  },
+  {
+    "en": "to order",
+    "pl": "zamawiać / zamówić",
+    "ex": "I ordered the dress online and it arrived in two days.",
+    "exPl": "Zamówiłam sukienkę online i dotarła w ciągu dwóch dni."
+  },
+  {
+    "en": "delivery",
+    "pl": "dostawa",
+    "ex": "Free delivery is available on orders over fifty pounds.",
+    "exPl": "Darmowa dostawa jest dostępna przy zamówieniach powyżej pięćdziesięciu funtów."
+  },
+  {
+    "en": "to deliver",
+    "pl": "dostarczać / dostarczyć",
+    "ex": "The parcel will be delivered tomorrow morning.",
+    "exPl": "Paczka zostanie dostarczona jutro rano."
+  },
+  {
+    "en": "parcel",
+    "pl": "paczka",
+    "ex": "The parcel arrived damaged so I contacted the seller.",
+    "exPl": "Paczka dotarła uszkodzona, więc skontaktowałem się ze sprzedawcą."
+  },
+  {
+    "en": "to track",
+    "pl": "śledzić (przesyłkę)",
+    "ex": "You can track your order on our website.",
+    "exPl": "Możesz śledzić swoje zamówienie na naszej stronie internetowej."
+  },
+  {
+    "en": "exchange",
+    "pl": "wymiana (towaru)",
+    "ex": "Can I exchange this for a bigger size?",
+    "exPl": "Czy mogę to wymienić na większy rozmiar?"
+  },
+  {
+    "en": "warranty",
+    "pl": "gwarancja",
+    "ex": "This washing machine comes with a two-year warranty.",
+    "exPl": "Ta pralka jest objęta dwuletnią gwarancją."
+  },
+  {
+    "en": "faulty",
+    "pl": "wadliwy / uszkodzony",
+    "ex": "The item was faulty so I asked for my money back.",
+    "exPl": "Towar był wadliwy, więc poprosiłem o zwrot pieniędzy."
+  },
+  {
+    "en": "to complain",
+    "pl": "skarżyć się / złożyć reklamację",
+    "ex": "She complained to the manager about the poor service.",
+    "exPl": "Poskarżyła się kierownikowi na złą obsługę."
+  },
+  {
+    "en": "complaint",
+    "pl": "reklamacja / skarga",
+    "ex": "I'd like to make a formal complaint about this product.",
+    "exPl": "Chciałbym złożyć formalną reklamację dotyczącą tego produktu."
+  },
+  {
+    "en": "customer service",
+    "pl": "obsługa klienta",
+    "ex": "Call our customer service team if you have any problems.",
+    "exPl": "Zadzwoń do naszego działu obsługi klienta, jeśli masz jakiekolwiek problemy."
+  },
+  {
+    "en": "customer",
+    "pl": "klient / klientka",
+    "ex": "The customer is always right.",
+    "exPl": "Klient ma zawsze rację."
+  },
+  {
+    "en": "refund policy",
+    "pl": "polityka zwrotów",
+    "ex": "Please read the refund policy before purchasing.",
+    "exPl": "Proszę zapoznać się z polityką zwrotów przed zakupem."
+  },
+  {
+    "en": "shopping bag",
+    "pl": "torba zakupowa",
+    "ex": "Do you need a shopping bag or do you have your own?",
+    "exPl": "Czy potrzebujesz torby zakupowej, czy masz własną?"
+  },
+  {
+    "en": "shop assistant",
+    "pl": "sprzedawca / ekspedient",
+    "ex": "The shop assistant helped me find my size.",
+    "exPl": "Sprzedawca pomógł mi znaleźć mój rozmiar."
+  },
+  {
+    "en": "queue",
+    "pl": "kolejka",
+    "ex": "There was a long queue at the checkout.",
+    "exPl": "Przy kasie stała długa kolejka."
+  },
+  {
+    "en": "to queue",
+    "pl": "stać w kolejce / czekać w kolejce",
+    "ex": "We had to queue for twenty minutes to pay.",
+    "exPl": "Musieliśmy czekać dwadzieścia minut w kolejce do kasy."
+  },
+  {
+    "en": "window shopping",
+    "pl": "oglądanie witryn sklepowych (bez kupowania)",
+    "ex": "She spent the afternoon window shopping in the city centre.",
+    "exPl": "Spędziła popołudnie na oglądaniu witryn sklepowych w centrum miasta."
+  },
+  {
+    "en": "impulse buy",
+    "pl": "zakup impulsywny",
+    "ex": "That chocolate bar was just an impulse buy.",
+    "exPl": "Ten baton czekoladowy był tylko zakupem impulsywnym."
+  },
+  {
+    "en": "second-hand",
+    "pl": "używany / z drugiej ręki",
+    "ex": "He prefers buying second-hand clothes to save money.",
+    "exPl": "Woli kupować używane ubrania, żeby zaoszczędzić pieniądze."
+  },
+  {
+    "en": "brand",
+    "pl": "marka",
+    "ex": "This brand is known for its high quality.",
+    "exPl": "Ta marka jest znana z wysokiej jakości."
+  },
+  {
+    "en": "brand new",
+    "pl": "nowy / zupełnie nowy",
+    "ex": "She bought a brand new laptop for university.",
+    "exPl": "Kupiła nowego laptopa na studia."
+  },
+  {
+    "en": "to browse",
+    "pl": "przeglądać (sklep / internet)",
+    "ex": "I like to browse the shops on Saturday afternoons.",
+    "exPl": "Lubię przeglądać sklepy w sobotnie popołudnia."
+  },
+  {
+    "en": "selection",
+    "pl": "wybór / asortyment",
+    "ex": "This shop has a great selection of shoes.",
+    "exPl": "Ten sklep ma wspaniały wybór butów."
+  },
+  {
+    "en": "sold out",
+    "pl": "wyprzedany / brak w magazynie",
+    "ex": "The item I wanted was sold out.",
+    "exPl": "Przedmiot, który chciałem, był wyprzedany."
+  },
+  {
+    "en": "in stock",
+    "pl": "dostępny / na stanie",
+    "ex": "Is this jacket in stock in a size medium?",
+    "exPl": "Czy ta kurtka jest dostępna w rozmiarze medium?"
+  },
+  {
+    "en": "to wrap",
+    "pl": "zawijać / zapakować (prezent)",
+    "ex": "Could you gift wrap it for me, please?",
+    "exPl": "Czy mógłby pan to dla mnie zapakować jako prezent?"
+  },
+  {
+    "en": "trolley bag",
+    "pl": "torba na kółkach / wózek zakupowy",
+    "ex": "My grandmother always uses a trolley bag for shopping.",
+    "exPl": "Moja babcia zawsze używa torby na kółkach do zakupów."
+  },
+  {
+    "en": "currency",
+    "pl": "waluta",
+    "ex": "You'll need to exchange your currency at the airport.",
+    "exPl": "Będziesz musiał wymienić walutę na lotnisku."
+  },
+  {
+    "en": "to exchange currency",
+    "pl": "wymieniać walutę",
+    "ex": "Where can I exchange currency in this city?",
+    "exPl": "Gdzie mogę wymienić walutę w tym mieście?"
+  },
+  {
+    "en": "contactless payment",
+    "pl": "płatność zbliżeniowa",
+    "ex": "I paid by contactless payment at the supermarket.",
+    "exPl": "Zapłaciłem płatnością zbliżeniową w supermarkecie."
+  },
+  {
+    "en": "direct debit",
+    "pl": "polecenie zapłaty",
+    "ex": "I set up a direct debit for my electricity bill.",
+    "exPl": "Ustanowiłem polecenie zapłaty za rachunek za prąd."
+  },
+  {
+    "en": "standing order",
+    "pl": "zlecenie stałe",
+    "ex": "I have a standing order to pay my rent each month.",
+    "exPl": "Mam zlecenie stałe na płatność czynszu każdego miesiąca."
+  },
+  {
+    "en": "to owe",
+    "pl": "być winnym (pieniądze) / mieć dług",
+    "ex": "I owe you ten pounds from last week.",
+    "exPl": "Jestem ci winny dziesięć funtów z zeszłego tygodnia."
+  },
+  {
+    "en": "debt",
+    "pl": "dług",
+    "ex": "She is trying to pay off her credit card debt.",
+    "exPl": "Ona stara się spłacić dług na karcie kredytowej."
+  },
+  {
+    "en": "credit card",
+    "pl": "karta kredytowa",
+    "ex": "He paid for the flight with his credit card.",
+    "exPl": "Zapłacił za lot kartą kredytową."
+  },
+  {
+    "en": "debit card",
+    "pl": "karta debetowa",
+    "ex": "I prefer using a debit card so I don't overspend.",
+    "exPl": "Wolę używać karty debetowej, żeby nie wydawać za dużo."
+  },
+  {
+    "en": "cashback",
+    "pl": "cashback / zwrot gotówki",
+    "ex": "This credit card offers two percent cashback on purchases.",
+    "exPl": "Ta karta kredytowa oferuje dwa procent cashbacku od zakupów."
+  },
+  {
+    "en": "installment",
+    "pl": "rata",
+    "ex": "I paid for the sofa in monthly installments.",
+    "exPl": "Zapłaciłem za sofę w miesięcznych ratach."
+  },
+  {
+    "en": "gross price",
+    "pl": "cena brutto",
+    "ex": "The gross price includes all taxes.",
+    "exPl": "Cena brutto zawiera wszystkie podatki."
+  },
+  {
+    "en": "net price",
+    "pl": "cena netto",
+    "ex": "The net price does not include VAT.",
+    "exPl": "Cena netto nie zawiera podatku VAT."
+  },
+  {
+    "en": "to haggle",
+    "pl": "targować się / negocjować cenę",
+    "ex": "In the market you can haggle over the price.",
+    "exPl": "Na targu można targować się o cenę."
+  },
+  {
+    "en": "wholesaler",
+    "pl": "hurtownik",
+    "ex": "Restaurants often buy from a wholesaler to save money.",
+    "exPl": "Restauracje często kupują od hurtownika, żeby zaoszczędzić."
+  },
+  {
+    "en": "retail",
+    "pl": "handel detaliczny / sprzedaż detaliczna",
+    "ex": "She works in retail management for a fashion brand.",
+    "exPl": "Pracuje w zarządzaniu handlem detalicznym dla marki modowej."
+  },
+  {
+    "en": "bag for life",
+    "pl": "torba wielokrotnego użytku",
+    "ex": "I always bring a bag for life to the supermarket.",
+    "exPl": "Zawsze przynoszę torbę wielokrotnego użytku do supermarketu."
+  },
+  {
+    "en": "barcode",
+    "pl": "kod kreskowy",
+    "ex": "The cashier scanned the barcode on the packaging.",
+    "exPl": "Kasjerka zeskanowała kod kreskowy na opakowaniu."
+  },
+  {
+    "en": "price list",
+    "pl": "cennik",
+    "ex": "You can find the price list on our website.",
+    "exPl": "Cennik można znaleźć na naszej stronie internetowej."
+  },
+  {
+    "en": "cashless",
+    "pl": "bezgotówkowy",
+    "ex": "More and more shops are going cashless these days.",
+    "exPl": "Coraz więcej sklepów przechodzi na płatności bezgotówkowe."
+  },
+  {
+    "en": "to reorder",
+    "pl": "zamawiać ponownie",
+    "ex": "We need to reorder this product before it runs out.",
+    "exPl": "Musimy zamówić ten produkt ponownie, zanim się skończy."
+  },
+  {
+    "en": "instalment plan",
+    "pl": "plan ratalny",
+    "ex": "He bought the TV on an instalment plan.",
+    "exPl": "Kupił telewizor w ramach planu ratalnego."
+  },
+  {
+    "en": "money back guarantee",
+    "pl": "gwarancja zwrotu pieniędzy",
+    "ex": "This shop offers a thirty-day money back guarantee.",
+    "exPl": "Ten sklep oferuje trzydziestodniową gwarancję zwrotu pieniędzy."
+  },
+  {
+    "en": "loyalty points",
+    "pl": "punkty lojalnościowe",
+    "ex": "I collected enough loyalty points to get a free coffee.",
+    "exPl": "Zebrałem wystarczająco punktów lojalnościowych na darmową kawę."
+  }
+]

@@ -1,0 +1,153 @@
+/* ============================================================
+   Motywy — pastelowa paleta, 3 warianty
+   ============================================================ */
+
+:root {
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-full: 999px;
+
+  --font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --dur: 220ms;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+
+  --nav-h: 68px;
+  --top-h: 60px;
+}
+
+/* ---------- JASNY ---------- */
+[data-theme="light"] {
+  --bg: #f6f4ff;
+  --bg-grad-1: #e9e4ff;
+  --bg-grad-2: #ffe9f3;
+  --bg-grad-3: #e0f5ff;
+
+  --surface: #ffffff;
+  --surface-2: #f4f2fb;
+  --surface-3: #ebe8f7;
+  --border: #e6e2f5;
+  --border-strong: #d5cfee;
+
+  --text: #2a2340;
+  --text-soft: #5f5878;
+  --text-muted: #918aa8;
+
+  --primary: #7c6cf5;
+  --primary-soft: #ece9ff;
+  --primary-contrast: #ffffff;
+
+  --accent: #ff8fb1;
+  --accent-soft: #ffe8ef;
+
+  --success: #3fbf8f;
+  --success-soft: #e0f7ee;
+  --danger: #f4718c;
+  --danger-soft: #ffe6ec;
+  --warning: #f2b657;
+  --warning-soft: #fff2dc;
+  --info: #5cb8e6;
+  --info-soft: #e2f4fd;
+
+  --box-1: #f4718c;
+  --box-2: #f2a05a;
+  --box-3: #e8c752;
+  --box-4: #6fc9a6;
+  --box-5: #7c6cf5;
+  --box-done: #3fbf8f;
+
+  --shadow-sm: 0 1px 2px rgba(60, 45, 110, .05), 0 2px 8px rgba(60, 45, 110, .05);
+  --shadow: 0 4px 14px rgba(60, 45, 110, .08), 0 12px 32px rgba(60, 45, 110, .07);
+  --shadow-lg: 0 18px 48px rgba(60, 45, 110, .14);
+}
+
+/* ---------- SEPIA ---------- */
+[data-theme="sepia"] {
+  --bg: #f6efe2;
+  --bg-grad-1: #f3e6d0;
+  --bg-grad-2: #f7e4d4;
+  --bg-grad-3: #eee7d5;
+
+  --surface: #fffaf0;
+  --surface-2: #f5ecdb;
+  --surface-3: #ece0ca;
+  --border: #e5d8c0;
+  --border-strong: #d5c3a4;
+
+  --text: #3d3122;
+  --text-soft: #6b5940;
+  --text-muted: #9c886c;
+
+  --primary: #b0793f;
+  --primary-soft: #f4e6d2;
+  --primary-contrast: #fffaf0;
+
+  --accent: #c98a6b;
+  --accent-soft: #f8e6da;
+
+  --success: #6f9b5f;
+  --success-soft: #e7f0da;
+  --danger: #c1664f;
+  --danger-soft: #f8e0d8;
+  --warning: #cd9a45;
+  --warning-soft: #f8ecd4;
+  --info: #7a9aa8;
+  --info-soft: #e4eef1;
+
+  --box-1: #c1664f;
+  --box-2: #cd9a45;
+  --box-3: #bfa14a;
+  --box-4: #8fae6b;
+  --box-5: #b0793f;
+  --box-done: #6f9b5f;
+
+  --shadow-sm: 0 1px 2px rgba(90, 65, 30, .06), 0 2px 8px rgba(90, 65, 30, .06);
+  --shadow: 0 4px 14px rgba(90, 65, 30, .09), 0 12px 32px rgba(90, 65, 30, .07);
+  --shadow-lg: 0 18px 48px rgba(90, 65, 30, .16);
+}
+
+/* ---------- CIEMNY ---------- */
+[data-theme="dark"] {
+  --bg: #15131f;
+  --bg-grad-1: #1e1a2e;
+  --bg-grad-2: #241c2c;
+  --bg-grad-3: #161f2a;
+
+  --surface: #1e1b2b;
+  --surface-2: #262233;
+  --surface-3: #302b40;
+  --border: #322c44;
+  --border-strong: #453d5e;
+
+  --text: #ece9f7;
+  --text-soft: #b6afcd;
+  --text-muted: #837c9c;
+
+  --primary: #9b8cff;
+  --primary-soft: #2b2544;
+  --primary-contrast: #17142a;
+
+  --accent: #ff9ec0;
+  --accent-soft: #382631;
+
+  --success: #55d3a4;
+  --success-soft: #1c3831;
+  --danger: #ff8199;
+  --danger-soft: #3b2430;
+  --warning: #ffc773;
+  --warning-soft: #3a2f1d;
+  --info: #77cbf2;
+  --info-soft: #1d3040;
+
+  --box-1: #ff8199;
+  --box-2: #ffb069;
+  --box-3: #f3d76b;
+  --box-4: #6fdcb4;
+  --box-5: #9b8cff;
+  --box-done: #55d3a4;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3), 0 2px 8px rgba(0, 0, 0, .25);
+  --shadow: 0 4px 14px rgba(0, 0, 0, .35), 0 12px 32px rgba(0, 0, 0, .3);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, .5);
+}

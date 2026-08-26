@@ -1,0 +1,22 @@
+[
+  { "id": "basics",         "name": "Podstawy i zwroty",        "icon": "🗣️", "count": 150 },
+  { "id": "people",         "name": "Ludzie i rodzina",         "icon": "👨‍👩‍👧", "count": 150 },
+  { "id": "body-health",    "name": "Ciało i zdrowie",          "icon": "🩺", "count": 150 },
+  { "id": "food",           "name": "Jedzenie i picie",         "icon": "🍎", "count": 150 },
+  { "id": "home",           "name": "Dom i wyposażenie",        "icon": "🏠", "count": 150 },
+  { "id": "work",           "name": "Praca i zawody",           "icon": "💼", "count": 150 },
+  { "id": "education",      "name": "Edukacja i nauka",         "icon": "🎓", "count": 150 },
+  { "id": "travel",         "name": "Podróże i transport",      "icon": "✈️", "count": 150 },
+  { "id": "shopping",       "name": "Zakupy i pieniądze",       "icon": "🛒", "count": 150 },
+  { "id": "time",           "name": "Czas i kalendarz",         "icon": "⏰", "count": 150 },
+  { "id": "weather-nature", "name": "Pogoda i przyroda",        "icon": "🌦️", "count": 150 },
+  { "id": "animals-plants", "name": "Zwierzęta i rośliny",      "icon": "🐾", "count": 150 },
+  { "id": "city",           "name": "Miasto i miejsca",         "icon": "🏙️", "count": 150 },
+  { "id": "technology",     "name": "Technologia i media",      "icon": "💻", "count": 150 },
+  { "id": "sport",          "name": "Sport i rekreacja",        "icon": "⚽", "count": 150 },
+  { "id": "culture",        "name": "Kultura i sztuka",         "icon": "🎭", "count": 150 },
+  { "id": "emotions",       "name": "Emocje i charakter",       "icon": "😊", "count": 150 },
+  { "id": "verbs",          "name": "Czasowniki podstawowe",    "icon": "⚡", "count": 150 },
+  { "id": "adjectives",     "name": "Przymiotniki i przysłówki","icon": "🎨", "count": 150 },
+  { "id": "phrasal",        "name": "Idiomy i phrasal verbs",   "icon": "💬", "count": 150 }
+]
