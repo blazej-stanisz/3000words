@@ -101,23 +101,25 @@ window.App.learn = (function (App) {
     root.replaceChildren(loader('Przygotowuję słówka…'));
 
     const limit = store.settings().sessionSize;
-    let words;
+    let pool;
     try {
-      words = await store.pickNewWords(catId, limit);
+      pool = await store.freshPool(catId);
     } catch (err) {
       console.error(err);
       toast('Nie udało się wczytać słówek');
       return showPicker();
     }
 
-    if (!words.length) {
+    if (!pool.length) {
       return showAllDone(catId);
     }
 
+    // Pula świeżych słów — bieżące to pool[0]. „Znam" zapisuje słowo jako opanowane
+    // i dobiera nowe z puli, więc sesja kończy się, gdy `limit` słów trafi do przegródki 1.
     session = {
       catId,
-      words,
-      index: 0,
+      pool,
+      limit,
       revealed: false,
       known: [],
       unknown: [],
@@ -145,10 +147,10 @@ window.App.learn = (function (App) {
 
   function renderTriage() {
     const s = session;
-    const word = s.words[s.index];
+    const word = s.pool[0];
     const cat = data.getCategory(word.cat);
-    const total = s.words.length;
-    const pct = (s.index / total) * 100;
+    const total = s.limit;
+    const pct = (Math.min(s.unknown.length, s.limit) / total) * 100;
     const settings = store.settings();
 
     const frag = html`
@@ -156,7 +158,7 @@ window.App.learn = (function (App) {
         <div class="session-head">
           <button class="icon-btn" data-quit aria-label="Przerwij sesję">✕</button>
           <div class="session-head__bar">${bar(pct)}</div>
-          <span class="session-head__count">${s.index + 1}/${total}</span>
+          <span class="session-head__count">${Math.min(s.unknown.length + 1, s.limit)}/${total}</span>
         </div>
 
         <div class="flash">
@@ -214,6 +216,10 @@ window.App.learn = (function (App) {
           <button class="btn btn--dont" data-answer="0">Nie znam</button>
           <button class="btn btn--know" data-answer="1">Znam</button>
         </div>
+
+        <p style="margin:10px 0 0;font-size:12.5px;color:var(--text-muted);text-align:center">
+          „Znam" — słowo zapisane jako opanowane, w jego miejsce dobiorę nowe.
+        </p>
       </div>
     `;
 
@@ -231,18 +237,24 @@ window.App.learn = (function (App) {
     return frag;
   }
 
-  function answerTriage(correct) {
+  async function answerTriage(correct) {
     const s = session;
-    const word = s.words[s.index];
+    const word = s.pool[0];
     tts.cancel();
 
-    (correct ? s.known : s.unknown).push(word);
+    if (correct) {
+      // „Znam" — słowo od razu opanowane, poza cyklem powtórek; dobieramy nowe z puli.
+      s.known.push(word);
+      await store.saveRecord(srs.createMasteredRecord(word));
+    } else {
+      s.unknown.push(word);
+    }
 
-    s.index++;
+    s.pool.shift();
     s.revealed = false;
 
-    if (s.index >= s.words.length) {
-      finishTriage();
+    if (s.unknown.length >= s.limit || !s.pool.length) {
+      await finishTriage();
     } else {
       renderTriage();
     }
@@ -253,13 +265,10 @@ window.App.learn = (function (App) {
   async function finishTriage() {
     const s = session;
 
-    // Słowa znane od razu trafiają wyżej — wciąż wymagają weryfikacji w powtórkach.
-    const records = [
-      ...s.known.map((w) => srs.createRecord(w, srs.KNOWN_ON_SIGHT_BOX)),
-      ...s.unknown.map((w) => srs.createRecord(w, 1)),
-    ];
-    await store.saveRecords(records);
-    await store.logSession({ type: 'learn', new: records.length, known: s.known.length });
+    // Do przegródki 1 trafiają tylko słowa „nie znam"; „znam" zapisaliśmy już na bieżąco.
+    const records = s.unknown.map((w) => srs.createRecord(w, 1));
+    if (records.length) await store.saveRecords(records);
+    await store.logSession({ type: 'learn', new: records.length + s.known.length, known: s.known.length });
 
     if (!s.unknown.length) return renderSummary();
     renderIntro();
@@ -357,13 +366,21 @@ window.App.learn = (function (App) {
     const learned = s.unknown.length;
     const known = s.known.length;
     const total = learned + known;
+    const exhausted = s.pool.length === 0 && s.unknown.length < s.limit;
+
+    const summaryText =
+      learned === 0
+        ? `Wszystkie ${total} ${wordsLabel(total)} w tej puli już znałeś — zapisaliśmy je jako opanowane.`
+        : `${learned} ${wordsLabel(learned)} trafiło do systemu powtórek` +
+          (known ? `, ${known} ${wordsLabel(known)} oznaczone „znam" zapisaliśmy jako opanowane` : '') +
+          `.${exhausted ? ' W tej puli nie było już więcej nowych słówek.' : ''}`;
 
     const frag = html`
       <div>
         <div class="summary">
           <div class="summary__emoji">${known >= learned ? '🌟' : '💪'}</div>
           <h2 class="summary__title">Sesja zakończona</h2>
-          <p class="summary__text">Przerobiłeś ${total} ${wordsLabel(total)}. Wszystkie trafiły do systemu powtórek.</p>
+          <p class="summary__text">${summaryText}</p>
           <div class="pill-row">
             <span class="pill pill--success">${known} oznaczonych „znam"</span>
             <span class="pill pill--danger">${learned} w trybie nauki</span>
@@ -397,14 +414,13 @@ window.App.learn = (function (App) {
 
     tts.cancel();
 
-    // Zapis tylko tych, które nie zostały jeszcze utrwalone w bazie.
-    const pending = [
-      ...s.known.filter((w) => !store.hasSeen(w.id)).map((w) => srs.createRecord(w, srs.KNOWN_ON_SIGHT_BOX)),
-      ...s.unknown.filter((w) => !store.hasSeen(w.id)).map((w) => srs.createRecord(w, 1)),
-    ];
-    if (pending.length) {
-      await store.saveRecords(pending);
-      await store.logSession({ type: 'learn', new: pending.length, known: s.known.length });
+    // „Znam" zapisaliśmy na bieżąco jako opanowane; tu dokładamy tylko nieutrwalone „nie znam".
+    const pending = s.unknown
+      .filter((w) => !store.hasSeen(w.id))
+      .map((w) => srs.createRecord(w, 1));
+    if (pending.length) await store.saveRecords(pending);
+    if (pending.length || s.known.length) {
+      await store.logSession({ type: 'learn', new: pending.length + s.known.length, known: s.known.length });
     }
 
     toast(`Zapisano ${seen} ${wordsLabel(seen)}`);

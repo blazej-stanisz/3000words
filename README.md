@@ -5,7 +5,7 @@ z tłumaczeniami na polski i przykładami użycia. Bez backendu, bez logowania �
 cały postęp zapisywany jest lokalnie w przeglądarce (IndexedDB).
 
 ## Uruchomienie
-**Otwórz** https://blazej-stanisz.github.io/AZ-900-Practice-Tests/
+**Otwórz** https://blazej-stanisz.github.io/3000words/
 
 ### Skąd biorą się dane
 
@@ -50,8 +50,9 @@ powershell -ExecutionPolicy Bypass -File .\tools\validate.ps1
   za drugim razem zostanie rozpoznane.
 - Terminy powtórek dostają losowy rozrzut ±10 %, żeby nie kumulowały się
   w jednym dniu.
-- Słowo oznaczone „Znam" przy pierwszym kontakcie trafia od razu do przegródki 3,
-  ale nadal wymaga potwierdzenia w powtórkach.
+- Słowo oznaczone „Znam" przy pierwszym kontakcie jest od razu zapisywane jako
+  **opanowane** i nie wraca do nauki. W jego miejsce aplikacja dobiera nowe słowo,
+  więc sesja kończy się dopiero, gdy limit nowych słów trafi do przegródki 1.
 - Błędne karty wracają w tej samej sesji po 4 innych kartach (przeplatanie).
 
 ### Moduły
@@ -59,7 +60,8 @@ powershell -ExecutionPolicy Bypass -File .\tools\validate.ps1
 - **Start** — ekran powitalny przy pierwszym uruchomieniu, a gdy nauka już trwa:
   pierścień postępu, statystyki dnia, seria dni, wykres aktywności z 14 dni,
   rozkład przegródek, szybkie akcje i „słowo dnia" z lektorem.
-- **Nauka** — wybór kategorii, triage nowych słówek (Tłumacz → Znam / Nie znam),
+- **Nauka** — wybór kategorii, triage nowych słówek (Tłumacz → Znam / Nie znam;
+  „Znam" pomija słowo i dobiera nowe, sesja trwa, aż limit trafi do przegródek),
   następnie etap zapamiętywania słów nieznanych z lektorem, na końcu podsumowanie.
 - **Powtórka** — inteligentnie dobrana kolejka zaległych słów (domyślnie do 25).
 - **Postępy** — wykres opanowania, statystyki dzienne, seria dni, podział na kategorie.
@@ -107,3 +109,19 @@ tools/
 
 3000 wpisów w 20 kategoriach tematycznych. Każdy wpis zawiera słowo angielskie,
 polskie tłumaczenie oraz zdanie przykładowe z tłumaczeniem.
+
+### Debugowanie w Chrome (testy automatyczne)
+
+Aby umożliwić automatyzacji (np. browser-use) sterowanie Chrome przez CDP:
+
+1. Uruchom Chrome z osobnym profilem i portem debugowania:
+
+   ```
+   "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\ChromeDebugProfile"
+   ```
+
+2. W otwartym Chrome wejdź na `chrome://inspect/#remote-debugging` i zaznacz
+   **„Allow remote debugging for this browser instance"**.
+3. Przy pierwszym połączeniu debuggera kliknij **Allow** w popupie.
+
+Ustawienie zgody zapisuje się w profilu — wystarczy raz.

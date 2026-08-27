@@ -154,9 +154,13 @@ window.App.store = (function (App) {
    * @param {number} limit
    */
   async function pickNewWords(catId, limit) {
+    return (await freshPool(catId)).slice(0, limit);
+  }
+
+  /** Wszystkie niewprowadzone jeszcze słowa (bez limitu), potasowane. */
+  async function freshPool(catId) {
     const pool = catId ? await data.loadWords(catId) : await data.loadAllWords();
-    const fresh = pool.filter((w) => !state.progress.has(w.id));
-    return srs.shuffle(fresh).slice(0, limit);
+    return srs.shuffle(pool.filter((w) => !state.progress.has(w.id)));
   }
 
   /** Zwraca karty do sesji powtórek (rekord + pełne dane słowa). */
@@ -210,5 +214,5 @@ window.App.store = (function (App) {
     return n;
   }
 
-  return { DEFAULT_SETTINGS, init, settings, updateSettings, allRecords, record, hasSeen, saveRecord, saveRecords, resetProgress, stats, statsByCategory, dueCount, boxSummary, pickNewWords, pickReviewCards, logSession, getHistory, introducedToday, streak };
+  return { DEFAULT_SETTINGS, init, settings, updateSettings, allRecords, record, hasSeen, saveRecord, saveRecords, resetProgress, stats, statsByCategory, dueCount, boxSummary, pickNewWords, freshPool, pickReviewCards, logSession, getHistory, introducedToday, streak };
 })(window.App);

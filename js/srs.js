@@ -30,7 +30,7 @@ window.App.srs = (function (App) {
     5: { name: 'Znane', desc: 'Powtórka co 16 dni' },
   };
 
-  /** Przegródka, do której trafia słowo oznaczone od razu jako „znam". */
+  /** Przegródka odnotowywana w rekordzie słowa oznaczonego od razu jako „znam" (rekord jest od razu opanowany, poza cyklem). */
   const KNOWN_ON_SIGHT_BOX = 3;
 
   /** Liczba kart, po których błędne słowo wraca w tej samej sesji. */
@@ -77,6 +77,17 @@ window.App.srs = (function (App) {
       correctStreak: 1,
       introducedAt: ts,
       lastSeen: ts,
+    };
+  }
+
+  /**
+   * Rekord słowa oznaczonego od razu jako „znam" — poza cyklem powtórek,
+   * od razu opanowane (nie wraca do nauki ani do przegródek).
+   */
+  function createMasteredRecord(word, ts = Date.now()) {
+    return {
+      ...createRecord(word, KNOWN_ON_SIGHT_BOX, ts),
+      mastered: true,
     };
   }
 
@@ -188,5 +199,5 @@ window.App.srs = (function (App) {
     return arr;
   }
 
-  return { BOX_COUNT, BOX_INTERVALS, BOX_LABELS, KNOWN_ON_SIGHT_BOX, REQUEUE_GAP, now, startOfDay, endOfToday, nextDue, createRecord, grade, isDue, selectReviewQueue, countDue, boxSummary, formatDue, shuffle };
+  return { BOX_COUNT, BOX_INTERVALS, BOX_LABELS, KNOWN_ON_SIGHT_BOX, REQUEUE_GAP, now, startOfDay, endOfToday, nextDue, createRecord, createMasteredRecord, grade, isDue, selectReviewQueue, countDue, boxSummary, formatDue, shuffle };
 })(window.App);
