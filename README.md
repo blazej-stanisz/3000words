@@ -9,6 +9,7 @@ cały postęp zapisywany jest lokalnie w przeglądarce (IndexedDB).
 
 ### Skąd biorą się dane
 
+
 Słownik trzymany jest w plikach JSON (`data/categories.json`,
 `data/words/*.json`) i to one są źródłem prawdy. Gdy strona działa z `file://`,
 przeglądarka blokuje `fetch` na plikach lokalnych, więc aplikacja sięga po
