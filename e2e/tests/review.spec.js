@@ -6,7 +6,8 @@ test('powtórka kończy się podsumowaniem i automatycznym powrotem na start', a
   await openApp(page);
   await seedDueRecords(page, 3);
 
-  await page.locator('[data-route="review"]').click();
+  // Powtórka ukryta w menu (prezentacja) — wejście przez hash routera.
+  await page.evaluate(() => { location.hash = 'review'; });
   await page.getByRole('button', { name: 'Rozpocznij powtórkę' }).click();
 
   // 3 karty: „Pokaż" + „Znam".
@@ -28,7 +29,7 @@ test('przycisk „Zakończ" na podsumowaniu powtórki natychmiast wraca na start
   await openApp(page);
   await seedDueRecords(page, 3);
 
-  await page.locator('[data-route="review"]').click();
+  await page.evaluate(() => { location.hash = 'review'; });
   await page.getByRole('button', { name: 'Rozpocznij powtórkę' }).click();
 
   for (let i = 0; i < 3; i++) {

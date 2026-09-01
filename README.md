@@ -114,8 +114,9 @@ e2e/
 ### Motywy
 
 Jasny, sepia i ciemny — wybór w **Ustawieniach** (sekcja „Wygląd", zakładka
-w dolnym pasku). Dolny pasek zawiera Start, Naukę, Powtórkę, Postępy,
-Przegródki i Ustawienia.
+w dolnym pasku). Dolny pasek zawiera Start, Postępy, Przegródki i Ustawienia;
+pozycje Nauka i Powtórka są ukryte (tryb prezentacji), ale widoki pozostają
+dostępne (np. przez przyciski na stronie głównej lub hash routera).
 
 ### Reklama
 

@@ -106,7 +106,7 @@ svg { display: block; }
   bottom: 0; left: 0; right: 0;
   z-index: 40;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
   max-width: 780px;
   margin: 0 auto;
@@ -140,6 +140,8 @@ svg { display: block; }
   color: var(--primary);
   background: var(--primary-soft);
 }
+/* Ukryte pozycje menu (np. Nauka/Powtórka podczas prezentacji) */
+.navbar__item--hidden { display: none; }
 .navbar__icon {
   width: 21px; height: 21px;
   fill: none;

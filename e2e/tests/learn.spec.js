@@ -5,7 +5,8 @@ const { openApp } = require('./helpers');
 test('sesja nauki kończy się po limicie „nie znam" i słowa trafiają do przegródek', async ({ page }) => {
   await openApp(page);
 
-  await page.locator('[data-route="learn"]').click();
+  // Nauka ukryta w menu (prezentacja) — wejście przez hash routera.
+  await page.evaluate(() => { location.hash = 'learn'; });
   await page.locator('.cat--all').click();
 
   // Triage: 7× „Nie znam" = domyślny limit sesji (7).
@@ -34,7 +35,7 @@ test('sesja nauki kończy się po limicie „nie znam" i słowa trafiają do prz
 test('„Znam" zapisuje słowo jako opanowane i nie zużywa limitu sesji', async ({ page }) => {
   await openApp(page);
 
-  await page.locator('[data-route="learn"]').click();
+  await page.evaluate(() => { location.hash = 'learn'; });
   await page.locator('.cat--all').click();
 
   // 1× „Znam" + 7× „Nie znam" — licznik „nie znam" to 7 = koniec triage.

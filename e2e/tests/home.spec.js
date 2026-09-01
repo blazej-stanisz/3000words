@@ -11,8 +11,12 @@ test('aplikacja startuje i pokazuje ekran główny z nawigacją', async ({ page 
   await expect(page.locator('.ad-slot')).toBeVisible();
   await expect(page.locator('.brand-bar')).toContainText('3000 Words');
 
-  // Dolna nawigacja: Start, Nauka, Powtórka, Postępy, Przegródki, Ustawienia.
-  await expect(page.locator('.navbar__item')).toHaveCount(6);
+  // Dolna nawigacja: widoczne Start, Postępy, Przegródki, Ustawienia.
+  await expect(page.locator('.navbar__item:visible')).toHaveCount(4);
+
+  // Nauka i Powtórka ukryte (tryb prezentacji) — ale widoki dalej działają.
+  await expect(page.locator('[data-route="learn"]')).toBeHidden();
+  await expect(page.locator('[data-route="review"]')).toBeHidden();
 
   // Pierwsze uruchomienie (czysty profil) -> ekran powitalny.
   await expect(page.getByRole('button', { name: 'Rozpocznij naukę' })).toBeVisible();
@@ -22,10 +26,11 @@ test('aplikacja startuje i pokazuje ekran główny z nawigacją', async ({ page 
 test('nawigacja między zakładkami działa (Start -> Nauka -> Powtórka)', async ({ page }) => {
   await openApp(page);
 
-  await page.locator('[data-route="learn"]').click();
+  // Nauka/Powtórka są ukryte w menu (prezentacja) — wchodzimy przez hash routera.
+  await page.evaluate(() => { location.hash = 'learn'; });
   await expect(page.locator('.page-title')).toHaveText('Nauka');
 
-  await page.locator('[data-route="review"]').click();
+  await page.evaluate(() => { location.hash = 'review'; });
   // Czysty profil: brak słów w przegródkach -> ekran „Brak materiału".
   await expect(page.locator('.empty__title')).toHaveText('Brak materiału');
 
