@@ -21,9 +21,11 @@ window.App.learn = (function (App) {
 
   let root = null;
   let session = null;
+  let ctxRef = null;
 
-  async function render(container) {
+  async function render(container, ctx) {
     root = container;
+    ctxRef = ctx || null;
     session = null;
     await showPicker();
   }
@@ -253,7 +255,9 @@ window.App.learn = (function (App) {
     s.pool.shift();
     s.revealed = false;
 
-    if (s.unknown.length >= s.limit || !s.pool.length) {
+    // Koniec sesji: limit słów „nie znam" (reguła użytkownika) lub limit pominięć
+    // „znam" (górna granica, żeby sesja nie ciągnęła się przez całą pulę).
+    if (s.unknown.length >= s.limit || s.known.length >= s.limit || !s.pool.length) {
       await finishTriage();
     } else {
       renderTriage();
@@ -367,13 +371,17 @@ window.App.learn = (function (App) {
     const known = s.known.length;
     const total = learned + known;
     const exhausted = s.pool.length === 0 && s.unknown.length < s.limit;
+    const skippedCap = s.known.length >= s.limit && s.pool.length > 0;
+    const due = store.dueCount();
 
     const summaryText =
       learned === 0
-        ? `Wszystkie ${total} ${wordsLabel(total)} w tej puli już znałeś — zapisaliśmy je jako opanowane.`
+        ? skippedCap
+          ? `Wszystkie ${total} ${wordsLabel(total)} w tej sesji już znałeś — zapisaliśmy je jako opanowane. Nowe słówka nadal czekają w puli.`
+          : `Wszystkie ${total} ${wordsLabel(total)} w tej puli już znałeś — zapisaliśmy je jako opanowane.`
         : `${learned} ${wordsLabel(learned)} trafiło do systemu powtórek` +
           (known ? `, ${known} ${wordsLabel(known)} oznaczone „znam" zapisaliśmy jako opanowane` : '') +
-          `.${exhausted ? ' W tej puli nie było już więcej nowych słówek.' : ''}`;
+          `.${skippedCap ? ' Osiągnąłeś limit pominiętych słów — reszta nowych słówek czeka w puli.' : ''}${exhausted ? ' W tej puli nie było już więcej nowych słówek.' : ''}`;
 
     const frag = html`
       <div>
@@ -388,14 +396,20 @@ window.App.learn = (function (App) {
         </div>
 
         <div class="stack" style="margin-top:16px">
-          <button class="btn btn--primary btn--block btn--lg" data-again>Kolejna sesja</button>
-          <button class="btn btn--ghost btn--block" data-back>Wróć do kategorii</button>
+          ${
+            due > 0
+              ? `<button class="btn btn--primary btn--block btn--lg" data-review>Masz ${due} ${wordsLabel(due)} do powtórki</button>
+                 <button class="btn btn--soft btn--block" data-again>Kolejna sesja</button>`
+              : `<button class="btn btn--primary btn--block btn--lg" data-again>Kolejna sesja</button>`
+          }
+          <button class="btn btn--ghost btn--block" data-home>Zakończ naukę</button>
         </div>
       </div>
     `;
 
-    frag.querySelector('[data-again]').addEventListener('click', () => startSession(s.catId));
-    frag.querySelector('[data-back]').addEventListener('click', showPicker);
+    frag.querySelector('[data-again]')?.addEventListener('click', () => startSession(s.catId));
+    frag.querySelector('[data-review]')?.addEventListener('click', () => ctxRef?.navigate('review'));
+    frag.querySelector('[data-home]').addEventListener('click', () => ctxRef?.navigate('home'));
     root.replaceChildren(frag);
   }
 

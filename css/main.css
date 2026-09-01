@@ -1049,12 +1049,6 @@ svg { display: block; }
 }
 .mini-boxes__foot span:nth-child(2) { color: var(--primary); font-weight: 600; }
 
-/* Słowo dnia */
-.daily__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.daily__en { font-size: 23px; font-weight: 700; letter-spacing: -.02em; color: var(--primary); }
-.daily__pl { margin-top: 3px; font-size: 15px; color: var(--text-soft); }
-.daily__ex { margin-top: 14px; }
-
 .home-foot {
   margin-top: 16px;
   text-align: center;

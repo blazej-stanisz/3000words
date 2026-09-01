@@ -18,15 +18,19 @@ window.App.review = (function (App) {
 
   let root = null;
   let session = null;
+  let ctxRef = null;
+  let redirectTimer = null;
 
-  async function render(container) {
+  async function render(container, ctx) {
     root = container;
+    ctxRef = ctx || null;
     session = null;
     await showStart();
   }
 
   function destroy() {
     tts.cancel();
+    stopRedirect();
     session = null;
   }
 
@@ -53,8 +57,10 @@ window.App.review = (function (App) {
                 : 'Na dziś nie ma zaległych powtórek. Wróć jutro albo wprowadź nowe słówka w zakładce <b>Nauka</b>.'
             }
           </p>
+          <button class="btn btn--primary btn--block" style="margin-top:18px" data-home>Powrót do ekranu głównego</button>
         </div>
       `;
+      frag.querySelector('[data-home]').addEventListener('click', () => ctxRef?.navigate('home'));
       root.replaceChildren(frag);
       return;
     }
@@ -240,6 +246,30 @@ window.App.review = (function (App) {
 
   /* =======================  Podsumowanie  ======================= */
 
+  /** Zatrzymuje odliczanie do przekierowania (anulowane przyciskami). */
+  function stopRedirect() {
+    if (redirectTimer) {
+      clearInterval(redirectTimer);
+      redirectTimer = null;
+    }
+  }
+
+  /** Odlicza 5 s i przekierowuje na stronę główną. */
+  function scheduleHomeRedirect(noteEl) {
+    stopRedirect();
+    let left = 5;
+    if (noteEl) noteEl.textContent = `Strona główna za ${left} s…`;
+    redirectTimer = setInterval(() => {
+      left--;
+      if (left <= 0) {
+        stopRedirect();
+        ctxRef?.navigate('home');
+        return;
+      }
+      if (noteEl) noteEl.textContent = `Strona główna za ${left} s…`;
+    }, 1000);
+  }
+
   function renderSummary() {
     const s = session;
     const accuracy = s.correct + s.wrong ? Math.round((s.correct / (s.correct + s.wrong)) * 100) : 0;
@@ -257,6 +287,8 @@ window.App.review = (function (App) {
             ${s.mastered ? `<span class="pill pill--info">${s.mastered} opanowanych</span>` : ''}
             ${s.demoted ? `<span class="pill pill--danger">${s.demoted} cofniętych</span>` : ''}
           </div>
+
+          <p data-redirect-note style="margin-top:12px;font-size:13px;color:var(--text-muted);text-align:center"></p>
         </div>
 
         <div class="stack" style="margin-top:16px">
@@ -270,9 +302,18 @@ window.App.review = (function (App) {
       </div>
     `;
 
-    frag.querySelector('[data-again]')?.addEventListener('click', startSession);
-    frag.querySelector('[data-back]').addEventListener('click', showStart);
+    frag.querySelector('[data-again]')?.addEventListener('click', () => {
+      stopRedirect();
+      startSession();
+    });
+    frag.querySelector('[data-back]').addEventListener('click', () => {
+      stopRedirect();
+      ctxRef?.navigate('home');
+    });
+    const noteEl = frag.querySelector('[data-redirect-note]');
     root.replaceChildren(frag);
+
+    scheduleHomeRedirect(noteEl);
   }
 
   function quit() {

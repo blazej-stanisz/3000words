@@ -56,12 +56,14 @@ window.App.srs = (function (App) {
 
   /**
    * Termin kolejnej powtórki dla danej przegródki.
-   * Dodaje losowy rozrzut ±10 %, żeby powtórki nie kumulowały się w jednym dniu.
+   * Dodaje losowy rozrzut ±10 %, żeby powtórki nie kumulowały się w jednym dniu,
+   * ale nigdy nie planuje słowa na ten sam dzień — najwcześniej jutro.
    */
   function nextDue(box, from = Date.now()) {
     const days = BOX_INTERVALS[box] ?? 1;
     const jitter = 1 + (Math.random() * 0.2 - 0.1);
-    return startOfDay(from) + Math.round(days * jitter * DAY);
+    const due = startOfDay(from) + Math.round(days * jitter * DAY);
+    return Math.max(due, startOfDay(from) + DAY);
   }
 
   /** Nowy rekord postępu dla świeżo wprowadzonego słowa. */

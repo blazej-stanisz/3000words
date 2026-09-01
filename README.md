@@ -30,6 +30,44 @@ kategorii, puste pola oraz duplikaty (lokalne i międzykategoryjne).
 powershell -ExecutionPolicy Bypass -File .\tools\validate.ps1
 ```
 
+## Testy (Playwright)
+
+Testy end-to-end działają w przeglądarce Chromium Playwrighta. Aplikacja
+uruchamiana jest bezpośrednio z `file://`, a każdy test dostaje świeży,
+czysty profil (osobny IndexedDB) — nie ruszają Twoich postępów.
+
+### Pierwsze uruchomienie (tylko raz)
+
+```bash
+cd e2e
+npm install                 # zależności testowe
+npx playwright install chromium   # przeglądarka testowa
+```
+
+### Uruchamianie
+
+```bash
+cd e2e
+npm test                    # wszystkie testy (headless)
+npm run test:headed         # z widocznym oknem przeglądarki
+npx playwright test tests/learn.spec.js   # tylko jeden plik
+npx playwright test --grep "Znam"         # tylko testy pasujące do nazwy
+npx playwright test --ui                  # tryb UI z podglądem kroków
+```
+
+### Struktura
+
+```
+e2e/
+  package.json              # zależności i skrypty (npm test)
+  playwright.config.js      # konfiguracja (headless, viewport mobilny)
+  tests/
+    helpers.js              # otwieranie aplikacji, zasiewanie rekordów
+    home.spec.js            # start aplikacji, nawigacja
+    learn.spec.js           # sesja nauki: limit „nie znam", „Znam" -> opanowane
+    review.spec.js          # powtórka: podsumowanie, powrót na start
+```
+
 ## Jak to działa
 
 ### System przegródek (Leitner, 5 poziomów)
@@ -50,21 +88,24 @@ powershell -ExecutionPolicy Bypass -File .\tools\validate.ps1
 - Słowo, które raz zawiodło w danej sesji, nie awansuje tego dnia, nawet jeśli
   za drugim razem zostanie rozpoznane.
 - Terminy powtórek dostają losowy rozrzut ±10 %, żeby nie kumulowały się
-  w jednym dniu.
+  w jednym dniu. Nowe słowo nigdy nie jest planowane na ten sam dzień,
+  w którym je wprowadzono — najwcześniej na jutro.
 - Słowo oznaczone „Znam" przy pierwszym kontakcie jest od razu zapisywane jako
-  **opanowane** i nie wraca do nauki. W jego miejsce aplikacja dobiera nowe słowo,
-  więc sesja kończy się dopiero, gdy limit nowych słów trafi do przegródki 1.
+  **opanowane** i nie wraca do nauki. W jego miejsce aplikacja dobiera nowe słowo.
+  Sesja kończy się, gdy `limit` słów trafi do przegródki 1 — albo po `limicie`
+  pominięć „Znam", żeby nie ciągnęła się przez całą pulę.
 - Błędne karty wracają w tej samej sesji po 4 innych kartach (przeplatanie).
 
 ### Moduły
 
 - **Start** — ekran powitalny przy pierwszym uruchomieniu, a gdy nauka już trwa:
   pierścień postępu, statystyki dnia, seria dni, wykres aktywności z 14 dni,
-  rozkład przegródek, szybkie akcje i „słowo dnia" z lektorem.
+  rozkład przegródek i szybkie akcje.
 - **Nauka** — wybór kategorii, triage nowych słówek (Tłumacz → Znam / Nie znam;
   „Znam" pomija słowo i dobiera nowe, sesja trwa, aż limit trafi do przegródek),
   następnie etap zapamiętywania słów nieznanych z lektorem, na końcu podsumowanie.
-- **Powtórka** — inteligentnie dobrana kolejka zaległych słów (domyślnie do 25).
+- **Powtórka** — inteligentnie dobrana kolejka zaległych słów (domyślnie do 25);
+  po zakończeniu sesji podsumowanie i automatyczny powrót na Start (5 s).
 - **Postępy** — wykres opanowania, statystyki dzienne, seria dni, podział na kategorie.
 - **Przegródki** — liczebność każdej przegródki i ile słów czeka na dziś.
 - **Ustawienia** — rozmiar sesji, rozmiar powtórki, przykłady użycia, lektor

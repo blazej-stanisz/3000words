@@ -7,34 +7,13 @@ window.App.home = (function (App) {
   const store = App.store;
   const data = App.data;
   const srs = App.srs;
-  const tts = App.tts;
-  const { html, esc, bar, loader, speakerIcon, wordsLabel, plural } = App.ui;
+  const { html, bar, loader, wordsLabel, plural } = App.ui;
 
   const DAY = 86400000;
   const CHART_DAYS = 14;
   const WEEK_LETTERS = ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'];
 
   let ctxRef = null;
-  let dailyWord = null;
-
-  /* ------------------------- Słowo dnia ------------------------- */
-
-  /** Deterministyczny wybór na podstawie daty — ta sama karta przez cały dzień. */
-  function seedFor(dayStart) {
-    let h = 2166136261;
-    const s = String(dayStart);
-    for (let i = 0; i < s.length; i++) {
-      h ^= s.charCodeAt(i);
-      h = Math.imul(h, 16777619);
-    }
-    return Math.abs(h);
-  }
-
-  async function pickDailyWord() {
-    const all = await data.loadAllWords();
-    if (!all.length) return null;
-    return all[seedFor(srs.startOfDay()) % all.length];
-  }
 
   /* ------------------------- Aktywność ------------------------- */
 
@@ -107,7 +86,7 @@ window.App.home = (function (App) {
 
   /* ------------------------- Widoki ------------------------- */
 
-  function welcomeMarkup(word) {
+  function welcomeMarkup() {
     return html`
       <div>
         <section class="hero hero--welcome">
@@ -143,33 +122,12 @@ window.App.home = (function (App) {
           </div>
         </div>
 
-        ${word ? dailyMarkup(word) : ''}
       </div>
     `;
   }
 
-  function dailyMarkup(word) {
-    return `
-      <h2 class="section-title">Słowo dnia</h2>
-      <div class="card daily">
-        <div class="daily__head">
-          <div class="daily__en">${esc(word.en)}</div>
-          <button class="speak-btn" id="dailySpeak" aria-label="Odtwórz">${speakerIcon()}</button>
-        </div>
-        <div class="daily__pl">${esc(word.pl)}</div>
-        ${
-          word.ex
-            ? `<div class="example daily__ex">
-                 <div class="example__en">${esc(word.ex)}</div>
-                 ${word.exPl ? `<div class="example__pl">${esc(word.exPl)}</div>` : ''}
-               </div>`
-            : ''
-        }
-      </div>`;
-  }
-
   function dashboardMarkup(model) {
-    const { s, due, todayNew, streakDays, history, word, sum } = model;
+    const { s, due, todayNew, streakDays, history, sum } = model;
     const inSystem = s.mastered + s.learning;
 
     const greet = (() => {
@@ -264,8 +222,6 @@ window.App.home = (function (App) {
         ${s.fresh > 0
           ? `<p class="home-foot">Przed Tobą jeszcze ${s.fresh} ${wordsLabel(s.fresh)} do poznania.</p>`
           : `<p class="home-foot">Przerobiłeś cały słownik — gratulacje! 🎉</p>`}
-
-        ${word ? dailyMarkup(word) : ''}
       </div>
     `;
   }
@@ -277,13 +233,11 @@ window.App.home = (function (App) {
     container.replaceChildren(loader());
     await data.loadCategories();
 
-    dailyWord = await pickDailyWord().catch(() => null);
-
     const s = store.stats();
     const started = s.mastered + s.learning > 0;
 
     if (!started) {
-      container.replaceChildren(welcomeMarkup(dailyWord));
+      container.replaceChildren(welcomeMarkup());
     } else {
       const [history, streakDays] = await Promise.all([store.getHistory(), store.streak()]);
       container.replaceChildren(
@@ -293,7 +247,6 @@ window.App.home = (function (App) {
           todayNew: store.introducedToday(),
           streakDays,
           history,
-          word: dailyWord,
           sum: store.boxSummary(),
         })
       );
@@ -302,11 +255,6 @@ window.App.home = (function (App) {
     container.querySelectorAll('[data-go]').forEach((btn) => {
       btn.addEventListener('click', () => ctxRef.navigate(btn.dataset.go));
     });
-
-    const speak = container.querySelector('#dailySpeak');
-    if (speak && dailyWord) {
-      speak.addEventListener('click', () => tts.speak(dailyWord.en));
-    }
   }
 
   return { render };
