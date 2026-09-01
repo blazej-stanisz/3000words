@@ -44,12 +44,6 @@ window.App = window.App || {};
     await store.updateSettings({ theme });
   }
 
-  function pickTheme(theme) {
-    if (theme === document.documentElement.dataset.theme) return;
-    setTheme(theme);
-    if (current === 'settings') navigate('settings', true);
-  }
-
   /* ------------------------- Router ------------------------- */
 
   async function navigate(route, force = false) {
@@ -63,7 +57,6 @@ window.App = window.App || {};
     document.title = `${ROUTES[route].title} — 3000 Words`;
 
     $$('.navbar__item').forEach((b) => b.classList.toggle('is-active', b.dataset.route === route));
-    $('#settingsBtn').classList.toggle('is-active', route === 'settings');
 
     try {
       await ROUTES[route].view.render(viewEl, ctx);
@@ -92,11 +85,6 @@ window.App = window.App || {};
     }
 
     applyTheme(store.settings().theme);
-
-    $$('#themeSwitch [data-theme-pick]').forEach((btn) => {
-      btn.addEventListener('click', () => pickTheme(btn.dataset.themePick));
-    });
-    $('#settingsBtn').addEventListener('click', () => navigate('settings'));
 
     $$('.navbar__item').forEach((btn) => {
       btn.addEventListener('click', () => navigate(btn.dataset.route));

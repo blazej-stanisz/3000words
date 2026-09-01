@@ -46,94 +46,47 @@ svg { display: block; }
   margin: 0 auto;
 }
 
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  height: var(--top-h);
+/* Slot reklamy — docelowo baner AdMob (na razie mock) */
+.ad-slot {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 18px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  justify-content: center;
+  padding: 6px 12px 0;
+}
+.ad-slot__mock {
+  width: 100%;
+  max-width: 340px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  background: var(--surface-3);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
 }
 
-.topbar__brand {
+/* Pasek z nazwą aplikacji — pod reklamą, na każdej stronie */
+.brand-bar {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 6px;
+  padding: 10px 16px 2px;
   font-weight: 700;
   letter-spacing: -.02em;
 }
-.topbar__logo {
+.brand-bar__logo {
   font-size: 22px;
   background: linear-gradient(120deg, var(--primary), var(--accent));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
-.topbar__name { font-size: 15px; color: var(--text-soft); font-weight: 500; }
-
-.topbar__actions { display: flex; align-items: center; gap: 9px; }
-.topbar__btn {
-  width: 38px; height: 38px;
-  color: var(--text-muted);
-}
-.topbar__btn .navbar__icon { width: 19px; height: 19px; }
-.topbar__btn.is-active {
-  color: var(--primary);
-  background: var(--primary-soft);
-  border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
-}
-
-.theme-switch {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  padding: 3px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
-}
-.theme-switch__btn {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: none;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
-}
-.theme-switch__btn:active { transform: scale(.9); }
-.theme-switch__dot {
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border-strong);
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-}
-[data-theme-dot="light"] { background: #f4f1ff; }
-[data-theme-dot="sepia"] { background: #e8d4b0; }
-[data-theme-dot="dark"]  { background: #302b40; }
-[data-theme="light"] [data-theme-pick="light"],
-[data-theme="sepia"] [data-theme-pick="sepia"],
-[data-theme="dark"]  [data-theme-pick="dark"] {
-  background: var(--primary-soft);
-}
-[data-theme="light"] [data-theme-pick="light"] .theme-switch__dot,
-[data-theme="sepia"] [data-theme-pick="sepia"] .theme-switch__dot,
-[data-theme="dark"]  [data-theme-pick="dark"] .theme-switch__dot {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2.5px var(--primary-soft);
-}
+.brand-bar__name { font-size: 15px; color: var(--text-soft); font-weight: 500; }
 
 .main {
   flex: 1;
@@ -153,7 +106,7 @@ svg { display: block; }
   bottom: 0; left: 0; right: 0;
   z-index: 40;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 2px;
   max-width: 780px;
   margin: 0 auto;
@@ -1078,9 +1031,6 @@ svg { display: block; }
   .hero__ring { gap: 14px; }
   .ring { width: 100px; height: 100px; }
   .chart__track { height: 70px; }
-  .topbar { padding: 0 12px; }
-  .topbar__actions { gap: 6px; }
-  .theme-switch__btn { width: 36px; height: 36px; }
   .seg--theme button { min-height: 58px; font-size: 12.5px; }
 }
 

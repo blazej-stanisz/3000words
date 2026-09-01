@@ -113,9 +113,15 @@ e2e/
 
 ### Motywy
 
-Jasny, sepia i ciemny — przełącznik w prawym górnym rogu lub w Ustawieniach.
-Obok przełącznika motywu znajduje się skrót do Ustawień; dolny pasek zawiera
-Start, Naukę, Powtórkę, Postępy i Przegródki.
+Jasny, sepia i ciemny — wybór w **Ustawieniach** (sekcja „Wygląd", zakładka
+w dolnym pasku). Dolny pasek zawiera Start, Naukę, Powtórkę, Postępy,
+Przegródki i Ustawienia.
+
+### Reklama
+
+U góry każdej strony znajduje się **slot reklamowy** (obecnie mock
+„Reklama · 320×50") — docelowo baner AdMob. Tuż pod nim wyświetlany jest
+pasek z nazwą aplikacji „3000 Words".
 
 ### Lektor
 

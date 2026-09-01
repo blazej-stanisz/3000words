@@ -14,28 +14,16 @@
 </head>
 <body>
   <div class="app-shell">
-    <header class="topbar">
-      <div class="topbar__brand">
-        <span class="topbar__logo">3000</span>
-        <span class="topbar__name">Words</span>
-      </div>
-      <div class="topbar__actions">
-        <button class="icon-btn topbar__btn" id="settingsBtn" title="Ustawienia" aria-label="Ustawienia">
-          <svg viewBox="0 0 24 24" class="navbar__icon"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"/></svg>
-        </button>
-        <div class="theme-switch" id="themeSwitch" role="group" aria-label="Motyw kolorystyczny">
-          <button class="theme-switch__btn" data-theme-pick="light" title="Motyw jasny" aria-label="Motyw jasny">
-            <span class="theme-switch__dot" data-theme-dot="light"></span>
-          </button>
-          <button class="theme-switch__btn" data-theme-pick="sepia" title="Motyw sepia" aria-label="Motyw sepia">
-            <span class="theme-switch__dot" data-theme-dot="sepia"></span>
-          </button>
-          <button class="theme-switch__btn" data-theme-pick="dark" title="Motyw ciemny" aria-label="Motyw ciemny">
-            <span class="theme-switch__dot" data-theme-dot="dark"></span>
-          </button>
-        </div>
-      </div>
-    </header>
+    <!-- Slot reklamy — docelowo baner AdMob (na razie mock) -->
+    <div class="ad-slot" id="adSlot" aria-label="Reklama">
+      <div class="ad-slot__mock">Reklama · 320×50</div>
+    </div>
+
+    <!-- Nazwa aplikacji — pod reklamą, na każdej stronie -->
+    <div class="brand-bar">
+      <span class="brand-bar__logo">3000</span>
+      <span class="brand-bar__name">Words</span>
+    </div>
 
     <main class="main" id="view" aria-live="polite"></main>
 
@@ -59,6 +47,10 @@
       <button class="navbar__item" data-route="boxes">
         <svg viewBox="0 0 24 24" class="navbar__icon"><path d="M3 7h18v13H3z"/><path d="M3 7l2-3h14l2 3"/><path d="M12 7v13"/></svg>
         <span>Przegródki</span>
+      </button>
+      <button class="navbar__item" data-route="settings">
+        <svg viewBox="0 0 24 24" class="navbar__icon"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"/></svg>
+        <span>Ustawienia</span>
       </button>
     </nav>
   </div>
