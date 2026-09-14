@@ -47,7 +47,8 @@ test('motyw zmienia się z poziomu Ustawień (dolny pasek)', async ({ page }) =>
   await page.locator('[data-route="settings"]').click();
   await expect(page.locator('.page-title')).toHaveText('Ustawienia');
 
-  // Sekcja „Wygląd" — zmiana motywu działa.
+  // Przy domyślnym „Automatycznie" wybór motywu jest nieaktywny — najpierw go wyłączamy.
+  await page.locator('[data-toggle-auto]').click();
   await page.locator('[data-theme-set="dark"]').click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 

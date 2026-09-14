@@ -23,19 +23,46 @@ window.App = window.App || {};
     settings: { view: settings, title: 'Ustawienia' },
   };
 
-  const THEMES = ['light', 'sepia', 'dark'];
-  const THEME_COLORS = { light: '#f6f4ff', sepia: '#f6efe2', dark: '#15131f' };
+  const THEMES = ['auto', 'light', 'dark'];
+  const EXPLICIT_THEMES = ['light', 'dark'];
+  const THEME_COLORS = { light: '#f6f4ff', dark: '#15131f' };
+
+  /** Motyw systemu w przeglądarce. */
+  const SYSTEM_DARK = '(prefers-color-scheme: dark)';
+  /** Podpowiedź dla skryptu w <head> — bez niej przy starcie mruga jasny motyw. */
+  const THEME_HINT_KEY = 'themeResolved';
 
   let current = null;
   const viewEl = $('#view');
 
-  const ctx = { setTheme, navigate };
+  const ctx = { setTheme, resolveTheme, navigate };
 
   /* ------------------------- Motyw ------------------------- */
 
+  function systemDark() {
+    return !!(window.matchMedia && window.matchMedia(SYSTEM_DARK).matches);
+  }
+
+  /**
+   * Ustawienie motywu → wariant do zastosowania.
+   * „auto" (i wartości nieznane, np. zapisana w starszej wersji „sepia") idą za systemem,
+   * jawny wybór użytkownika jest nadrzędny.
+   */
+  function resolveTheme(theme) {
+    if (EXPLICIT_THEMES.includes(theme)) return theme;
+    return systemDark() ? 'dark' : 'light';
+  }
+
   function applyTheme(theme) {
-    document.documentElement.dataset.theme = theme;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', THEME_COLORS[theme] || '#ffffff');
+    const resolved = resolveTheme(theme);
+    document.documentElement.dataset.theme = resolved;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', THEME_COLORS[resolved] || '#ffffff');
+    try {
+      localStorage.setItem(THEME_HINT_KEY, resolved);
+    } catch (err) {
+      /* np. tryb prywatny — podpowiedź jest tylko optymalizacją */
+    }
+    return resolved;
   }
 
   async function setTheme(theme) {
@@ -85,6 +112,12 @@ window.App = window.App || {};
     }
 
     applyTheme(store.settings().theme);
+
+    // „Automatycznie": przełączenie trybu ciemnego w systemie od razu zmienia motyw aplikacji.
+    window.matchMedia?.(SYSTEM_DARK).addEventListener('change', () => {
+      const theme = store.settings().theme;
+      if (!EXPLICIT_THEMES.includes(theme)) applyTheme(theme);
+    });
 
     $$('.navbar__item').forEach((btn) => {
       btn.addEventListener('click', () => navigate(btn.dataset.route));

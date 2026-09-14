@@ -117,7 +117,8 @@ window.App.learn = (function (App) {
     }
 
     // Pula świeżych słów — bieżące to pool[0]. „Znam" zapisuje słowo jako opanowane
-    // i dobiera nowe z puli, więc sesja kończy się, gdy `limit` słów trafi do przegródki 1.
+    // i dobiera nowe z puli, więc sesja kończy się dopiero, gdy `limit` słów trafi do
+    // przegródki 1 (albo skończy się pula) — „Znam" nie zużywa limitu sesji.
     session = {
       catId,
       pool,
@@ -255,9 +256,9 @@ window.App.learn = (function (App) {
     s.pool.shift();
     s.revealed = false;
 
-    // Koniec sesji: limit słów „nie znam" (reguła użytkownika) lub limit pominięć
-    // „znam" (górna granica, żeby sesja nie ciągnęła się przez całą pulę).
-    if (s.unknown.length >= s.limit || s.known.length >= s.limit || !s.pool.length) {
+    // Koniec sesji: `limit` słów „nie znam" (reguła użytkownika) albo wyczerpanie
+    // świeżej puli. „Znam" nie zużywa limitu i nie kończy sesji.
+    if (s.unknown.length >= s.limit || !s.pool.length) {
       await finishTriage();
     } else {
       renderTriage();
@@ -371,17 +372,14 @@ window.App.learn = (function (App) {
     const known = s.known.length;
     const total = learned + known;
     const exhausted = s.pool.length === 0 && s.unknown.length < s.limit;
-    const skippedCap = s.known.length >= s.limit && s.pool.length > 0;
     const due = store.dueCount();
 
     const summaryText =
       learned === 0
-        ? skippedCap
-          ? `Wszystkie ${total} ${wordsLabel(total)} w tej sesji już znałeś — zapisaliśmy je jako opanowane. Nowe słówka nadal czekają w puli.`
-          : `Wszystkie ${total} ${wordsLabel(total)} w tej puli już znałeś — zapisaliśmy je jako opanowane.`
+        ? `Wszystkie ${total} ${wordsLabel(total)} w tej puli już znałeś — zapisaliśmy je jako opanowane.${exhausted ? ' W tej puli nie było już więcej nowych słówek.' : ''}`
         : `${learned} ${wordsLabel(learned)} trafiło do systemu powtórek` +
           (known ? `, ${known} ${wordsLabel(known)} oznaczone „znam" zapisaliśmy jako opanowane` : '') +
-          `.${skippedCap ? ' Osiągnąłeś limit pominiętych słów — reszta nowych słówek czeka w puli.' : ''}${exhausted ? ' W tej puli nie było już więcej nowych słówek.' : ''}`;
+          `.${exhausted ? ' W tej puli nie było już więcej nowych słówek.' : ''}`;
 
     const frag = html`
       <div>

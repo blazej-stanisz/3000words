@@ -13,7 +13,7 @@ window.App.store = (function (App) {
   const tts = App.tts;
 
   const DEFAULT_SETTINGS = {
-    theme: 'light',
+    theme: 'auto',         // „auto" = zgodnie z ustawieniem systemu (jawny wybór: light/dark)
     sessionSize: 7,        // liczba nowych słów w sesji nauki
     reviewSize: 25,        // maks. kart w sesji powtórek
     ttsEnabled: true,      // lektor włączony
@@ -34,6 +34,10 @@ window.App.store = (function (App) {
   async function init() {
     const saved = await db.getMeta('settings', null);
     if (saved) state.settings = { ...DEFAULT_SETTINGS, ...saved };
+    // Motyw zapisany w starszej wersji (np. „sepia") → domyślne „automatycznie".
+    if (!['auto', 'light', 'dark'].includes(state.settings.theme)) {
+      state.settings.theme = DEFAULT_SETTINGS.theme;
+    }
 
     const records = await db.getAllProgress();
     state.progress = new Map(records.map((r) => [r.wordId, r]));

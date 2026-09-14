@@ -10,9 +10,10 @@ window.App.settings = (function (App) {
 
   const THEMES = [
     { id: 'light', label: 'Jasny' },
-    { id: 'sepia', label: 'Sepia' },
     { id: 'dark', label: 'Ciemny' },
   ];
+  /** Motywy wybrane ręcznie (pozostałe wartości, np. „auto", idą za systemem). */
+  const EXPLICIT_THEMES = THEMES.map((t) => t.id);
 
   async function render(container, ctx) {
     const s = store.settings();
@@ -109,17 +110,27 @@ window.App.settings = (function (App) {
         </div>
 
         <h2 class="section-title">Wygląd</h2>
-        <div class="setting setting--col">
-          <div>
-            <div class="setting__label">Motyw kolorystyczny</div>
+        <div class="stack-sm">
+          <div class="setting">
+            <div>
+              <div class="setting__label">Automatycznie (jak w systemie)</div>
+              <div class="setting__desc">Motyw zgodny z ustawieniem jasny/ciemny w systemie. Wybór poniżej nadpisuje to ustawienie.</div>
+            </div>
+            <button class="switch" data-toggle-auto role="switch"></button>
           </div>
-          <div class="seg seg--theme" data-theme-seg>
-            ${THEMES.map(
-              (t) => `<button data-theme-set="${t.id}" class="${s.theme === t.id ? 'is-active' : ''}">
-                        <span class="seg__swatch" data-theme-dot="${t.id}"></span>
-                        <span>${t.label}</span>
-                      </button>`
-            ).join('')}
+
+          <div class="setting setting--col">
+            <div>
+              <div class="setting__label">Motyw kolorystyczny</div>
+            </div>
+            <div class="seg seg--theme" data-theme-seg>
+              ${THEMES.map(
+                (t) => `<button data-theme-set="${t.id}">
+                          <span class="seg__swatch" data-theme-dot="${t.id}"></span>
+                          <span>${t.label}</span>
+                        </button>`
+              ).join('')}
+            </div>
           </div>
         </div>
 
@@ -201,17 +212,41 @@ window.App.settings = (function (App) {
     }
 
     /* ---------- Motyw ---------- */
-    frag.querySelectorAll('[data-theme-set]').forEach((btn) => {
+    const autoBtn = frag.querySelector('[data-toggle-auto]');
+    const themeButtons = [...frag.querySelectorAll('[data-theme-set]')];
+    const themeSeg = frag.querySelector('[data-theme-seg]');
+
+    /** Przełącznik „automatycznie" + wybór Jasny/Ciemny (przy auto wybór jest nieaktywny). */
+    function syncThemeUi() {
+      const setting = store.settings().theme;
+      const auto = !EXPLICIT_THEMES.includes(setting);
+      const resolved = ctx.resolveTheme(setting);
+
+      autoBtn.classList.toggle('is-on', auto);
+      autoBtn.setAttribute('aria-checked', String(auto));
+
+      themeSeg.classList.toggle('is-disabled', auto);
+      themeButtons.forEach((btn) => {
+        btn.disabled = auto;
+        btn.classList.toggle('is-active', btn.dataset.themeSet === resolved);
+      });
+    }
+
+    autoBtn.addEventListener('click', async () => {
+      const setting = store.settings().theme;
+      // Włączenie „automatycznie" → motyw systemu; wyłączenie → przypina motyw, który właśnie widać.
+      await ctx.setTheme(EXPLICIT_THEMES.includes(setting) ? 'auto' : ctx.resolveTheme(setting));
+      syncThemeUi();
+    });
+
+    themeButtons.forEach((btn) => {
       btn.addEventListener('click', async () => {
-        const theme = btn.dataset.themeSet;
-        await ctx.setTheme(theme);
-        frag.querySelectorAll('[data-theme-set]').forEach((b) => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        container.querySelectorAll('[data-theme-set]').forEach((b) =>
-          b.classList.toggle('is-active', b.dataset.themeSet === theme)
-        );
+        await ctx.setTheme(btn.dataset.themeSet); // jawny wybór wyłącza tryb automatyczny
+        syncThemeUi();
       });
     });
+
+    syncThemeUi();
 
     /* ---------- Reset ---------- */
     frag.querySelector('[data-reset]').addEventListener('click', async () => {

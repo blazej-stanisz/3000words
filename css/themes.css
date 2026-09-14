@@ -1,5 +1,5 @@
 /* ============================================================
-   Motywy — pastelowa paleta, 3 warianty
+   Motywy — pastelowa paleta, 2 warianty
    ============================================================ */
 
 :root {
@@ -60,51 +60,6 @@
   --shadow-sm: 0 1px 2px rgba(60, 45, 110, .05), 0 2px 8px rgba(60, 45, 110, .05);
   --shadow: 0 4px 14px rgba(60, 45, 110, .08), 0 12px 32px rgba(60, 45, 110, .07);
   --shadow-lg: 0 18px 48px rgba(60, 45, 110, .14);
-}
-
-/* ---------- SEPIA ---------- */
-[data-theme="sepia"] {
-  --bg: #f6efe2;
-  --bg-grad-1: #f3e6d0;
-  --bg-grad-2: #f7e4d4;
-  --bg-grad-3: #eee7d5;
-
-  --surface: #fffaf0;
-  --surface-2: #f5ecdb;
-  --surface-3: #ece0ca;
-  --border: #e5d8c0;
-  --border-strong: #d5c3a4;
-
-  --text: #3d3122;
-  --text-soft: #6b5940;
-  --text-muted: #9c886c;
-
-  --primary: #b0793f;
-  --primary-soft: #f4e6d2;
-  --primary-contrast: #fffaf0;
-
-  --accent: #c98a6b;
-  --accent-soft: #f8e6da;
-
-  --success: #6f9b5f;
-  --success-soft: #e7f0da;
-  --danger: #c1664f;
-  --danger-soft: #f8e0d8;
-  --warning: #cd9a45;
-  --warning-soft: #f8ecd4;
-  --info: #7a9aa8;
-  --info-soft: #e4eef1;
-
-  --box-1: #c1664f;
-  --box-2: #cd9a45;
-  --box-3: #bfa14a;
-  --box-4: #8fae6b;
-  --box-5: #b0793f;
-  --box-done: #6f9b5f;
-
-  --shadow-sm: 0 1px 2px rgba(90, 65, 30, .06), 0 2px 8px rgba(90, 65, 30, .06);
-  --shadow: 0 4px 14px rgba(90, 65, 30, .09), 0 12px 32px rgba(90, 65, 30, .07);
-  --shadow-lg: 0 18px 48px rgba(90, 65, 30, .16);
 }
 
 /* ---------- CIEMNY ---------- */

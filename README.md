@@ -64,7 +64,8 @@ e2e/
   tests/
     helpers.js              # otwieranie aplikacji, zasiewanie rekordów
     home.spec.js            # start aplikacji, nawigacja
-    learn.spec.js           # sesja nauki: limit „nie znam", „Znam" -> opanowane
+    learn.spec.js           # nauka: limit „nie znam", „Znam" -> opanowane (bez limitu pominięć)
+    theme.spec.js           # motyw: automatycznie wg systemu, jawny wybór nadpisuje, brak sepii
     review.spec.js          # powtórka: podsumowanie, powrót na start
 ```
 
@@ -91,9 +92,10 @@ e2e/
   w jednym dniu. Nowe słowo nigdy nie jest planowane na ten sam dzień,
   w którym je wprowadzono — najwcześniej na jutro.
 - Słowo oznaczone „Znam" przy pierwszym kontakcie jest od razu zapisywane jako
-  **opanowane** i nie wraca do nauki. W jego miejsce aplikacja dobiera nowe słowo.
-  Sesja kończy się, gdy `limit` słów trafi do przegródki 1 — albo po `limicie`
-  pominięć „Znam", żeby nie ciągnęła się przez całą pulę.
+  **opanowane** i nie wraca do nauki. W jego miejsce aplikacja dobiera nowe słowo,
+  a licznik nowych słów (`X/limit`) się nie zmienia — sesja kończy się dopiero, gdy
+  `limit` słów trafi do przegródki 1 albo skończy się świeża pula (podsumowanie
+  wtedy o tym informuje).
 - Błędne karty wracają w tej samej sesji po 4 innych kartach (przeplatanie).
 
 ### Moduły
@@ -102,7 +104,8 @@ e2e/
   pierścień postępu, statystyki dnia, seria dni, wykres aktywności z 14 dni,
   rozkład przegródek i szybkie akcje.
 - **Nauka** — wybór kategorii, triage nowych słówek (Tłumacz → Znam / Nie znam;
-  „Znam" pomija słowo i dobiera nowe, sesja trwa, aż limit trafi do przegródek),
+  „Znam" pomija słowo i dobiera nowe, nie zużywając limitu sesji — triage trwa, aż
+  `limit` słów „nie znam" trafi do przegródek),
   następnie etap zapamiętywania słów nieznanych z lektorem, na końcu podsumowanie.
 - **Powtórka** — inteligentnie dobrana kolejka zaległych słów (domyślnie do 25);
   po zakończeniu sesji podsumowanie i automatyczny powrót na Start (5 s).
@@ -113,8 +116,11 @@ e2e/
 
 ### Motywy
 
-Jasny, sepia i ciemny — wybór w **Ustawieniach** (sekcja „Wygląd", zakładka
-w dolnym pasku). Dolny pasek zawiera Start, Postępy, Przegródki i Ustawienia;
+Dwa warianty: **jasny** i **ciemny**. Domyślnie działa **„Automatycznie (jak w systemie)"** —
+motyw idzie za ustawieniem jasny/ciemny systemu i przełącza się na żywo, gdy je zmienisz.
+Jawny wybór w **Ustawieniach** (sekcja „Wygląd", zakładka w dolnym pasku) nadpisuje system
+i wyłącza tryb automatyczny; zapisany motyw ze starszej wersji („sepia") wraca do trybu
+automatycznego. Dolny pasek zawiera Start, Postępy, Przegródki i Ustawienia;
 pozycje Nauka i Powtórka są ukryte (tryb prezentacji), ale widoki pozostają
 dostępne (np. przez przyciski na stronie głównej lub hash routera).
 
