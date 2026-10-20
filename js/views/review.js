@@ -3,7 +3,7 @@ window.App.review = (function (App) {
   'use strict';
 
   /**
-   * Moduł „Powtórka" — utrwalanie słów znajdujących się w przegródkach.
+   * Moduł „Powtórka" - utrwalanie słów znajdujących się w przegródkach.
    *
    * Karta: PL → „Pokaż" → EN + przykład → „znam" / „nie znam".
    * Błędne słowo wraca do kolejki po kilku innych kartach i musi zostać
@@ -80,7 +80,7 @@ window.App.review = (function (App) {
           <p class="summary__text">
             ${
               due > limit
-                ? `Zaległych powtórek: ${due}. Sesja obejmie ${limit} najpilniejszych — krótkie, regularne sesje działają lepiej niż długie maratony.`
+                ? `Zaległych powtórek: ${due}. Sesja obejmie ${limit} najpilniejszych - krótkie, regularne sesje działają lepiej niż długie maratony.`
                 : 'To wszystkie powtórki zaplanowane na dziś.'
             }
           </p>
@@ -281,7 +281,7 @@ window.App.review = (function (App) {
         <div class="summary">
           <div class="summary__emoji">${accuracy >= 80 ? '🏆' : accuracy >= 50 ? '👏' : '📚'}</div>
           <h2 class="summary__title">Powtórka zakończona</h2>
-          <p class="summary__text">Skuteczność ${accuracy}% — ${s.total} ${wordsLabel(s.total)} przerobionych.</p>
+          <p class="summary__text">Skuteczność ${accuracy}% - ${s.total} ${wordsLabel(s.total)} przerobionych.</p>
           <div class="pill-row">
             <span class="pill pill--success">${s.promoted} awansowało</span>
             ${s.mastered ? `<span class="pill pill--info">${s.mastered} opanowanych</span>` : ''}

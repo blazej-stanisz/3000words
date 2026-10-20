@@ -3,7 +3,7 @@ window.App.tts = (function (App) {
   'use strict';
 
   /**
-   * Lektor — Web Speech API (speechSynthesis).
+   * Lektor - Web Speech API (speechSynthesis).
    * Brak wsparcia w przeglądarce nie blokuje działania aplikacji.
    */
 

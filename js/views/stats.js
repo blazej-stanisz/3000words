@@ -2,7 +2,7 @@ window.App = window.App || {};
 window.App.stats = (function (App) {
   'use strict';
 
-  /** Moduł „Postępy" — podsumowanie nauki. */
+  /** Moduł „Postępy" - podsumowanie nauki. */
 
   const store = App.store;
   const data = App.data;

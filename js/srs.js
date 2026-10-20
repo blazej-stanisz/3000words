@@ -3,7 +3,7 @@ window.App.srs = (function (App) {
   'use strict';
 
   /**
-   * Silnik powtórek — system 5 przegródek (Leitner) wzbogacony
+   * Silnik powtórek - system 5 przegródek (Leitner) wzbogacony
    * o elementy SM-2 (złagodzony reset po pomyłce, rozrzut interwałów).
    *
    * Przegródki i interwały (w dniach):
@@ -49,7 +49,7 @@ window.App.srs = (function (App) {
     return d.getTime();
   }
 
-  /** Koniec bieżącego dnia — słowo jest „na dziś", jeśli due <= tej wartości. */
+  /** Koniec bieżącego dnia - słowo jest „na dziś", jeśli due <= tej wartości. */
   function endOfToday() {
     return startOfDay() + DAY - 1;
   }
@@ -57,7 +57,7 @@ window.App.srs = (function (App) {
   /**
    * Termin kolejnej powtórki dla danej przegródki.
    * Dodaje losowy rozrzut ±10 %, żeby powtórki nie kumulowały się w jednym dniu,
-   * ale nigdy nie planuje słowa na ten sam dzień — najwcześniej jutro.
+   * ale nigdy nie planuje słowa na ten sam dzień - najwcześniej jutro.
    */
   function nextDue(box, from = Date.now()) {
     const days = BOX_INTERVALS[box] ?? 1;
@@ -83,7 +83,7 @@ window.App.srs = (function (App) {
   }
 
   /**
-   * Rekord słowa oznaczonego od razu jako „znam" — poza cyklem powtórek,
+   * Rekord słowa oznaczonego od razu jako „znam" - poza cyklem powtórek,
    * od razu opanowane (nie wraca do nauki ani do przegródek).
    */
   function createMasteredRecord(word, ts = Date.now()) {
@@ -105,7 +105,7 @@ window.App.srs = (function (App) {
 
     if (correct) {
       if (!canPromote) {
-        // Poprawka po błędzie w tej samej sesji — brak awansu, powtórka jutro.
+        // Poprawka po błędzie w tej samej sesji - brak awansu, powtórka jutro.
         next.due = nextDue(next.box, ts);
         return next;
       }

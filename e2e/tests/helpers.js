@@ -1,7 +1,7 @@
 // @ts-check
 const path = require('path');
 
-/** Adres startowy aplikacji (file:// — bez serwera). */
+/** Adres startowy aplikacji (file:// - bez serwera). */
 const APP_URL =
   'file:///' + path.resolve(__dirname, '..', '..', 'index.html').replace(/\\/g, '/');
 
@@ -23,7 +23,7 @@ async function seedDueRecords(page, count) {
     const words = await App.store.freshPool(null);
     const recs = words.slice(0, n).map((w) => {
       const r = App.srs.createRecord(w, 1, Date.now());
-      r.due = Date.now() - 1000; // zaległe — do powtórki od razu
+      r.due = Date.now() - 1000; // zaległe - do powtórki od razu
       return r;
     });
     await App.store.saveRecords(recs);

@@ -2,7 +2,7 @@ window.App = window.App || {};
 window.App.boxes = (function (App) {
   'use strict';
 
-  /** Moduł „Przegródki" — rozkład słów w systemie Leitnera. */
+  /** Moduł „Przegródki" - rozkład słów w systemie Leitnera. */
 
   const store = App.store;
   const data = App.data;
@@ -34,7 +34,7 @@ window.App.boxes = (function (App) {
           </div>
           <div>
             <div class="box-row__count">${count}</div>
-            <div class="box-row__due">${due ? `${due} na dziś` : '—'}</div>
+            <div class="box-row__due">${due ? `${due} na dziś` : '-'}</div>
           </div>
         </div>`;
       })
@@ -44,7 +44,7 @@ window.App.boxes = (function (App) {
       <div>
         <div class="page-head">
           <h1 class="page-title">Przegródki</h1>
-          <p class="page-sub">System 5 przegródek — każdy poprawny wynik przesuwa słowo wyżej i wydłuża odstęp przed kolejną powtórką.</p>
+          <p class="page-sub">System 5 przegródek - każdy poprawny wynik przesuwa słowo wyżej i wydłuża odstęp przed kolejną powtórką.</p>
         </div>
 
         <div class="stat-grid">
@@ -70,7 +70,7 @@ window.App.boxes = (function (App) {
             </div>
             <div>
               <div class="box-row__count">${sum.mastered}</div>
-              <div class="box-row__due">—</div>
+              <div class="box-row__due">-</div>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@ window.App.boxes = (function (App) {
           </p>
           <p style="font-size:13.5px;line-height:1.6;color:var(--text-soft);margin:10px 0 0">
             Pomyłka w przegródce 1–2 zostawia słowo na poziomie 1. Z wyższych przegródek słowo spada o dwa
-            poziomy — łagodniej niż pełny reset, dzięki czemu nie tracisz całego dorobku po jednej wpadce.
+            poziomy - łagodniej niż pełny reset, dzięki czemu nie tracisz całego dorobku po jednej wpadce.
             Słowo, które w danej sesji raz zawiodło, wraca w kolejce, ale nie awansuje.
           </p>
         </div>

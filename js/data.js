@@ -21,7 +21,7 @@ window.App.data = (function (App) {
       const res = await fetch(url);
       if (res.ok) return await res.json();
     } catch (_) {
-      /* file:// — fetch zablokowany przez CORS */
+      /* file:// - fetch zablokowany przez CORS */
     }
     const bundled = window.WORDS_BUNDLE && window.WORDS_BUNDLE[bundleKey];
     if (bundled) return bundled;

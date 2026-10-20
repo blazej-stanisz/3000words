@@ -14,7 +14,7 @@ test('aplikacja startuje i pokazuje ekran główny z nawigacją', async ({ page 
   // Dolna nawigacja: widoczne Start, Postępy, Przegródki, Ustawienia.
   await expect(page.locator('.navbar__item:visible')).toHaveCount(4);
 
-  // Nauka i Powtórka ukryte (tryb prezentacji) — ale widoki dalej działają.
+  // Nauka i Powtórka ukryte (tryb prezentacji) - ale widoki dalej działają.
   await expect(page.locator('[data-route="learn"]')).toBeHidden();
   await expect(page.locator('[data-route="review"]')).toBeHidden();
 
@@ -26,7 +26,7 @@ test('aplikacja startuje i pokazuje ekran główny z nawigacją', async ({ page 
 test('nawigacja między zakładkami działa (Start -> Nauka -> Powtórka)', async ({ page }) => {
   await openApp(page);
 
-  // Nauka/Powtórka są ukryte w menu (prezentacja) — wchodzimy przez hash routera.
+  // Nauka/Powtórka są ukryte w menu (prezentacja) - wchodzimy przez hash routera.
   await page.evaluate(() => { location.hash = 'learn'; });
   await expect(page.locator('.page-title')).toHaveText('Nauka');
 
@@ -47,7 +47,7 @@ test('motyw zmienia się z poziomu Ustawień (dolny pasek)', async ({ page }) =>
   await page.locator('[data-route="settings"]').click();
   await expect(page.locator('.page-title')).toHaveText('Ustawienia');
 
-  // Przy domyślnym „Automatycznie" wybór motywu jest nieaktywny — najpierw go wyłączamy.
+  // Przy domyślnym „Automatycznie" wybór motywu jest nieaktywny - najpierw go wyłączamy.
   await page.locator('[data-toggle-auto]').click();
   await page.locator('[data-theme-set="dark"]').click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');

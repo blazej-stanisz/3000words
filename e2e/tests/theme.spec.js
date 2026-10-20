@@ -7,7 +7,7 @@ const { openApp } = require('./helpers');
  * Jasny/Ciemny jest nadrzędny. Sepia została usunięta z aplikacji.
  */
 
-test.describe('motyw automatyczny — ciemny system', () => {
+test.describe('motyw automatyczny - ciemny system', () => {
   test.use({ colorScheme: 'dark' });
 
   test('aplikacja startuje w motywie ciemnym, gdy system jest ciemny', async ({ page }) => {
@@ -22,7 +22,7 @@ test.describe('motyw automatyczny — ciemny system', () => {
     await page.locator('[data-route="settings"]').click();
     await expect(page.locator('.page-title')).toHaveText('Ustawienia');
 
-    // Przy „Automatycznie" wybór motywu jest nieaktywny — najpierw go wyłączamy.
+    // Przy „Automatycznie" wybór motywu jest nieaktywny - najpierw go wyłączamy.
     await expect(page.locator('[data-theme-set="light"]')).toBeDisabled();
 
     await page.locator('[data-toggle-auto]').click();
@@ -37,7 +37,7 @@ test.describe('motyw automatyczny — ciemny system', () => {
   });
 });
 
-test.describe('motyw automatyczny — jasny system', () => {
+test.describe('motyw automatyczny - jasny system', () => {
   test.use({ colorScheme: 'light' });
 
   test('aplikacja startuje w motywie jasnym, gdy system jest jasny', async ({ page }) => {
@@ -61,7 +61,7 @@ test.describe('motyw automatyczny — jasny system', () => {
     await openApp(page);
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
 
-    // Użytkownik włącza tryb ciemny w systemie — motyw „automatyczny" idzie za nim.
+    // Użytkownik włącza tryb ciemny w systemie - motyw „automatyczny" idzie za nim.
     await page.emulateMedia({ colorScheme: 'dark' });
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 
@@ -86,7 +86,7 @@ test.describe('motyw automatyczny — jasny system', () => {
     const theme = await page.evaluate(() => App.store.settings().theme);
     expect(theme).toBe('auto');
 
-    // Brak sepii w interfejsie — są tylko Jasny i Ciemny.
+    // Brak sepii w interfejsie - są tylko Jasny i Ciemny.
     await page.locator('[data-route="settings"]').click();
     await expect(page.locator('[data-theme-set]')).toHaveCount(2);
     await expect(page.getByRole('button', { name: 'Sepia' })).toHaveCount(0);

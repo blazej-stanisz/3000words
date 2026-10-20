@@ -3,7 +3,7 @@ window.App.learn = (function (App) {
   'use strict';
 
   /**
-   * Moduł „Nauka" — wprowadzanie nowych słów.
+   * Moduł „Nauka" - wprowadzanie nowych słów.
    *
    * Etapy:
    *   picker   → wybór kategorii
@@ -50,7 +50,7 @@ window.App.learn = (function (App) {
       <div>
         <div class="page-head">
           <h1 class="page-title">Nauka</h1>
-          <p class="page-sub">Wybierz zakres — w tej sesji poznasz ${size} ${wordsLabel(size)}.</p>
+          <p class="page-sub">Wybierz zakres - w tej sesji poznasz ${size} ${wordsLabel(size)}.</p>
         </div>
 
         <div class="cat-list">
@@ -116,9 +116,9 @@ window.App.learn = (function (App) {
       return showAllDone(catId);
     }
 
-    // Pula świeżych słów — bieżące to pool[0]. „Znam" zapisuje słowo jako opanowane
+    // Pula świeżych słów - bieżące to pool[0]. „Znam" zapisuje słowo jako opanowane
     // i dobiera nowe z puli, więc sesja kończy się dopiero, gdy `limit` słów trafi do
-    // przegródki 1 (albo skończy się pula) — „Znam" nie zużywa limitu sesji.
+    // przegródki 1 (albo skończy się pula) - „Znam" nie zużywa limitu sesji.
     session = {
       catId,
       pool,
@@ -221,7 +221,7 @@ window.App.learn = (function (App) {
         </div>
 
         <p style="margin:10px 0 0;font-size:12.5px;color:var(--text-muted);text-align:center">
-          „Znam" — słowo zapisane jako opanowane, w jego miejsce dobiorę nowe.
+          „Znam" - słowo zapisane jako opanowane, w jego miejsce dobiorę nowe.
         </p>
       </div>
     `;
@@ -246,7 +246,7 @@ window.App.learn = (function (App) {
     tts.cancel();
 
     if (correct) {
-      // „Znam" — słowo od razu opanowane, poza cyklem powtórek; dobieramy nowe z puli.
+      // „Znam" - słowo od razu opanowane, poza cyklem powtórek; dobieramy nowe z puli.
       s.known.push(word);
       await store.saveRecord(srs.createMasteredRecord(word));
     } else {
@@ -287,7 +287,7 @@ window.App.learn = (function (App) {
         <h2 class="summary__title">Czas na zapamiętywanie</h2>
         <p class="summary__text">
           ${n} ${wordsLabel(n)} do przyswojenia. Przeczytaj, posłuchaj wymowy
-          i spróbuj powtórzyć na głos — to znacząco poprawia zapamiętywanie.
+          i spróbuj powtórzyć na głos - to znacząco poprawia zapamiętywanie.
         </p>
         <div class="pill-row">
           <span class="pill pill--success">${session.known.length} już znasz</span>
@@ -376,7 +376,7 @@ window.App.learn = (function (App) {
 
     const summaryText =
       learned === 0
-        ? `Wszystkie ${total} ${wordsLabel(total)} w tej puli już znałeś — zapisaliśmy je jako opanowane.${exhausted ? ' W tej puli nie było już więcej nowych słówek.' : ''}`
+        ? `Wszystkie ${total} ${wordsLabel(total)} w tej puli już znałeś - zapisaliśmy je jako opanowane.${exhausted ? ' W tej puli nie było już więcej nowych słówek.' : ''}`
         : `${learned} ${wordsLabel(learned)} trafiło do systemu powtórek` +
           (known ? `, ${known} ${wordsLabel(known)} oznaczone „znam" zapisaliśmy jako opanowane` : '') +
           `.${exhausted ? ' W tej puli nie było już więcej nowych słówek.' : ''}`;

@@ -5,7 +5,7 @@ const { openApp } = require('./helpers');
 test('sesja nauki kończy się po limicie „nie znam" i słowa trafiają do przegródek', async ({ page }) => {
   await openApp(page);
 
-  // Nauka ukryta w menu (prezentacja) — wejście przez hash routera.
+  // Nauka ukryta w menu (prezentacja) - wejście przez hash routera.
   await page.evaluate(() => { location.hash = 'learn'; });
   await page.locator('.cat--all').click();
 
@@ -38,7 +38,7 @@ test('„Znam" zapisuje słowo jako opanowane i nie zużywa limitu sesji', async
   await page.evaluate(() => { location.hash = 'learn'; });
   await page.locator('.cat--all').click();
 
-  // 1× „Znam" + 7× „Nie znam" — licznik „nie znam" to 7 = koniec triage.
+  // 1× „Znam" + 7× „Nie znam" - licznik „nie znam" to 7 = koniec triage.
   await page.getByRole('button', { name: 'Tłumacz' }).click();
   await page.getByRole('button', { name: 'Znam', exact: true }).click();
   for (let i = 0; i < 7; i++) {
@@ -65,7 +65,7 @@ test('„Znam" wielokrotnie nie kończy sesji ani nie zużywa limitu', async ({ 
   await page.evaluate(() => { location.hash = 'learn'; });
   await page.locator('.cat--all').click();
 
-  // 10 pominięć „znam" — więcej niż limit sesji (7). Licznik nowych słów stoi,
+  // 10 pominięć „znam" - więcej niż limit sesji (7). Licznik nowych słów stoi,
   // a sesja trwa: „Znam" dobiera kolejne świeże słowo i nie kończy triage'u.
   for (let i = 0; i < 10; i++) {
     await page.getByRole('button', { name: 'Tłumacz' }).click();

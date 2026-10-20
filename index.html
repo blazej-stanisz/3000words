@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#f6f4ff">
-  <title>3000 Words — nauka angielskiego</title>
+  <title>3000 Words - nauka angielskiego</title>
   <script>
     // Motyw jeszcze przed wczytaniem aplikacji: zapamiętany wariant (localStorage) albo
-    // ustawienie systemu — domyślne ustawienie to „Automatycznie (jak w systemie)".
+    // ustawienie systemu - domyślne ustawienie to „Automatycznie (jak w systemie)".
     // Klucz `themeResolved` zapisuje js/app.js; ustawienia z IndexedDB wczytują się chwilę później.
     (function () {
       try {
@@ -17,7 +17,7 @@
         }
         document.documentElement.dataset.theme = hint;
       } catch (err) {
-        /* brak localStorage (np. tryb prywatny) — zostaje domyślny jasny motyw */
+        /* brak localStorage (np. tryb prywatny) - zostaje domyślny jasny motyw */
       }
     })();
   </script>
@@ -30,12 +30,12 @@
 </head>
 <body>
   <div class="app-shell">
-    <!-- Slot reklamy — docelowo baner AdMob (na razie mock) -->
+    <!-- Slot reklamy - docelowo baner AdMob (na razie mock) -->
     <div class="ad-slot" id="adSlot" aria-label="Reklama">
       <div class="ad-slot__mock">Reklama · 320×50</div>
     </div>
 
-    <!-- Nazwa aplikacji — pod reklamą, na każdej stronie -->
+    <!-- Nazwa aplikacji - pod reklamą, na każdej stronie -->
     <div class="brand-bar">
       <span class="brand-bar__logo">3000</span>
       <span class="brand-bar__name">Words</span>

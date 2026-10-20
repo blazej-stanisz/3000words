@@ -2,7 +2,7 @@ window.App = window.App || {};
 window.App.home = (function (App) {
   'use strict';
 
-  /** Moduł „Start" — ekran powitalny i podsumowanie nauki. */
+  /** Moduł „Start" - ekran powitalny i podsumowanie nauki. */
 
   const store = App.store;
   const data = App.data;
@@ -43,7 +43,7 @@ window.App.home = (function (App) {
         const isToday = d.ts === today;
         const label = new Date(d.ts).getDate();
         return `
-        <div class="chart__col${isToday ? ' is-today' : ''}" title="${label}. — ${d.count} ${wordsLabel(d.count)}">
+        <div class="chart__col${isToday ? ' is-today' : ''}" title="${label}. - ${d.count} ${wordsLabel(d.count)}">
           <div class="chart__track">
             <div class="chart__bar" style="height:${pct}%"></div>
           </div>
@@ -103,7 +103,7 @@ window.App.home = (function (App) {
           <div class="feature">
             <div class="feature__icon">🗂️</div>
             <div class="feature__title">5 przegródek</div>
-            <div class="feature__text">Sprawdzona metoda Leitnera — im lepiej znasz słowo, tym rzadziej wraca.</div>
+            <div class="feature__text">Sprawdzona metoda Leitnera - im lepiej znasz słowo, tym rzadziej wraca.</div>
           </div>
           <div class="feature">
             <div class="feature__icon">🔊</div>
@@ -118,7 +118,7 @@ window.App.home = (function (App) {
           <div class="feature">
             <div class="feature__icon">💾</div>
             <div class="feature__title">Bez konta</div>
-            <div class="feature__text">Wszystko działa lokalnie w przeglądarce — bez logowania i bez internetu.</div>
+            <div class="feature__text">Wszystko działa lokalnie w przeglądarce - bez logowania i bez internetu.</div>
           </div>
         </div>
 
@@ -192,7 +192,7 @@ window.App.home = (function (App) {
         <h2 class="section-title">Twoja seria</h2>
         ${streakMarkup(history, streakDays)}
 
-        <h2 class="section-title">Aktywność — ostatnie 2 tygodnie</h2>
+        <h2 class="section-title">Aktywność - ostatnie 2 tygodnie</h2>
         <div class="card">
           ${chartMarkup(activityByDay(history))}
         </div>
@@ -221,7 +221,7 @@ window.App.home = (function (App) {
 
         ${s.fresh > 0
           ? `<p class="home-foot">Przed Tobą jeszcze ${s.fresh} ${wordsLabel(s.fresh)} do poznania.</p>`
-          : `<p class="home-foot">Przerobiłeś cały słownik — gratulacje! 🎉</p>`}
+          : `<p class="home-foot">Przerobiłeś cały słownik - gratulacje! 🎉</p>`}
       </div>
     `;
   }

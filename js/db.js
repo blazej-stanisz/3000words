@@ -3,10 +3,10 @@ window.App.db = (function (App) {
   'use strict';
 
   /**
-   * Warstwa trwałego zapisu — IndexedDB.
+   * Warstwa trwałego zapisu - IndexedDB.
    * Store'y:
-   *   progress  — postęp per słowo (klucz: wordId)
-   *   meta      — ustawienia i statystyki sesji (klucz: nazwa)
+   *   progress  - postęp per słowo (klucz: wordId)
+   *   meta      - ustawienia i statystyki sesji (klucz: nazwa)
    */
 
   const DB_NAME = 'words3000';

@@ -2,7 +2,7 @@ window.App = window.App || {};
 (function (App) {
   'use strict';
 
-  /** Punkt wejścia — inicjalizacja, motyw i router. */
+  /** Punkt wejścia - inicjalizacja, motyw i router. */
 
   const home = App.home;
   const store = App.store;
@@ -29,7 +29,7 @@ window.App = window.App || {};
 
   /** Motyw systemu w przeglądarce. */
   const SYSTEM_DARK = '(prefers-color-scheme: dark)';
-  /** Podpowiedź dla skryptu w <head> — bez niej przy starcie mruga jasny motyw. */
+  /** Podpowiedź dla skryptu w <head> - bez niej przy starcie mruga jasny motyw. */
   const THEME_HINT_KEY = 'themeResolved';
 
   let current = null;
@@ -60,7 +60,7 @@ window.App = window.App || {};
     try {
       localStorage.setItem(THEME_HINT_KEY, resolved);
     } catch (err) {
-      /* np. tryb prywatny — podpowiedź jest tylko optymalizacją */
+      /* np. tryb prywatny - podpowiedź jest tylko optymalizacją */
     }
     return resolved;
   }
@@ -81,7 +81,7 @@ window.App = window.App || {};
 
     current = route;
     location.hash = route;
-    document.title = `${ROUTES[route].title} — 3000 Words`;
+    document.title = `${ROUTES[route].title} - 3000 Words`;
 
     $$('.navbar__item').forEach((b) => b.classList.toggle('is-active', b.dataset.route === route));
 

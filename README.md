@@ -1,7 +1,7 @@
-# 3000 Words — nauka angielskiego metodą przegródek
+# 3000 Words - nauka angielskiego metodą przegródek
 
 Aplikacja webowa do nauki 3000 najważniejszych angielskich słówek i zwrotów
-z tłumaczeniami na polski i przykładami użycia. Bez backendu, bez logowania —
+z tłumaczeniami na polski i przykładami użycia. Bez backendu, bez logowania -
 cały postęp zapisywany jest lokalnie w przeglądarce (IndexedDB).
 
 ## Uruchomienie
@@ -34,7 +34,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\validate.ps1
 
 Testy end-to-end działają w przeglądarce Chromium Playwrighta. Aplikacja
 uruchamiana jest bezpośrednio z `file://`, a każdy test dostaje świeży,
-czysty profil (osobny IndexedDB) — nie ruszają Twoich postępów.
+czysty profil (osobny IndexedDB) - nie ruszają Twoich postępów.
 
 ### Pierwsze uruchomienie (tylko raz)
 
@@ -75,48 +75,48 @@ e2e/
 
 | Przegródka | Interwał powtórki |
 |---|---|
-| 1 — Nowe | codziennie |
-| 2 — Świeże | co 2 dni |
-| 3 — Znajome | co 4 dni |
-| 4 — Utrwalone | co 8 dni |
-| 5 — Prawie znane | co 16 dni |
+| 1 - Nowe | codziennie |
+| 2 - Świeże | co 2 dni |
+| 3 - Znajome | co 4 dni |
+| 4 - Utrwalone | co 8 dni |
+| 5 - Prawie znane | co 16 dni |
 
 - Poprawna odpowiedź przesuwa słowo o jedną przegródkę wyżej.
 - Poprawna odpowiedź w przegródce 5 oznacza słowo jako **opanowane**.
 - Błąd w przegródce 1–2 zostawia słowo w przegródce 1.
-- Błąd w przegródce 3–5 cofa słowo o dwa poziomy (złagodzony reset — badania
+- Błąd w przegródce 3–5 cofa słowo o dwa poziomy (złagodzony reset - badania
   pokazują, że pełny reset do przegródki 1 zbyt mocno karze pojedyncze potknięcia).
 - Słowo, które raz zawiodło w danej sesji, nie awansuje tego dnia, nawet jeśli
   za drugim razem zostanie rozpoznane.
 - Terminy powtórek dostają losowy rozrzut ±10 %, żeby nie kumulowały się
   w jednym dniu. Nowe słowo nigdy nie jest planowane na ten sam dzień,
-  w którym je wprowadzono — najwcześniej na jutro.
+  w którym je wprowadzono - najwcześniej na jutro.
 - Słowo oznaczone „Znam" przy pierwszym kontakcie jest od razu zapisywane jako
   **opanowane** i nie wraca do nauki. W jego miejsce aplikacja dobiera nowe słowo,
-  a licznik nowych słów (`X/limit`) się nie zmienia — sesja kończy się dopiero, gdy
+  a licznik nowych słów (`X/limit`) się nie zmienia - sesja kończy się dopiero, gdy
   `limit` słów trafi do przegródki 1 albo skończy się świeża pula (podsumowanie
   wtedy o tym informuje).
 - Błędne karty wracają w tej samej sesji po 4 innych kartach (przeplatanie).
 
 ### Moduły
 
-- **Start** — ekran powitalny przy pierwszym uruchomieniu, a gdy nauka już trwa:
+- **Start** - ekran powitalny przy pierwszym uruchomieniu, a gdy nauka już trwa:
   pierścień postępu, statystyki dnia, seria dni, wykres aktywności z 14 dni,
   rozkład przegródek i szybkie akcje.
-- **Nauka** — wybór kategorii, triage nowych słówek (Tłumacz → Znam / Nie znam;
-  „Znam" pomija słowo i dobiera nowe, nie zużywając limitu sesji — triage trwa, aż
+- **Nauka** - wybór kategorii, triage nowych słówek (Tłumacz → Znam / Nie znam;
+  „Znam" pomija słowo i dobiera nowe, nie zużywając limitu sesji - triage trwa, aż
   `limit` słów „nie znam" trafi do przegródek),
   następnie etap zapamiętywania słów nieznanych z lektorem, na końcu podsumowanie.
-- **Powtórka** — inteligentnie dobrana kolejka zaległych słów (domyślnie do 25);
+- **Powtórka** - inteligentnie dobrana kolejka zaległych słów (domyślnie do 25);
   po zakończeniu sesji podsumowanie i automatyczny powrót na Start (5 s).
-- **Postępy** — wykres opanowania, statystyki dzienne, seria dni, podział na kategorie.
-- **Przegródki** — liczebność każdej przegródki i ile słów czeka na dziś.
-- **Ustawienia** — rozmiar sesji, rozmiar powtórki, przykłady użycia, lektor
+- **Postępy** - wykres opanowania, statystyki dzienne, seria dni, podział na kategorie.
+- **Przegródki** - liczebność każdej przegródki i ile słów czeka na dziś.
+- **Ustawienia** - rozmiar sesji, rozmiar powtórki, przykłady użycia, lektor
   (włączenie, automatyczne odtwarzanie, głos, tempo), motyw, reset postępów.
 
 ### Motywy
 
-Dwa warianty: **jasny** i **ciemny**. Domyślnie działa **„Automatycznie (jak w systemie)"** —
+Dwa warianty: **jasny** i **ciemny**. Domyślnie działa **„Automatycznie (jak w systemie)"** -
 motyw idzie za ustawieniem jasny/ciemny systemu i przełącza się na żywo, gdy je zmienisz.
 Jawny wybór w **Ustawieniach** (sekcja „Wygląd", zakładka w dolnym pasku) nadpisuje system
 i wyłącza tryb automatyczny; zapisany motyw ze starszej wersji („sepia") wraca do trybu
@@ -127,7 +127,7 @@ dostępne (np. przez przyciski na stronie głównej lub hash routera).
 ### Reklama
 
 U góry każdej strony znajduje się **slot reklamowy** (obecnie mock
-„Reklama · 320×50") — docelowo baner AdMob. Tuż pod nim wyświetlany jest
+„Reklama · 320×50") - docelowo baner AdMob. Tuż pod nim wyświetlany jest
 pasek z nazwą aplikacji „3000 Words".
 
 ### Lektor
@@ -179,4 +179,4 @@ Aby umożliwić automatyzacji (np. browser-use) sterowanie Chrome przez CDP:
    **„Allow remote debugging for this browser instance"**.
 3. Przy pierwszym połączeniu debuggera kliknij **Allow** w popupie.
 
-Ustawienie zgody zapisuje się w profilu — wystarczy raz.
+Ustawienie zgody zapisuje się w profilu - wystarczy raz.

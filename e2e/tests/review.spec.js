@@ -6,7 +6,7 @@ test('powtórka kończy się podsumowaniem i automatycznym powrotem na start', a
   await openApp(page);
   await seedDueRecords(page, 3);
 
-  // Powtórka ukryta w menu (prezentacja) — wejście przez hash routera.
+  // Powtórka ukryta w menu (prezentacja) - wejście przez hash routera.
   await page.evaluate(() => { location.hash = 'review'; });
   await page.getByRole('button', { name: 'Rozpocznij powtórkę' }).click();
 

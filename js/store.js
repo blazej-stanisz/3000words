@@ -3,7 +3,7 @@ window.App.store = (function (App) {
   'use strict';
 
   /**
-   * Warstwa stanu aplikacji — ustawienia + postępy w pamięci,
+   * Warstwa stanu aplikacji - ustawienia + postępy w pamięci,
    * z synchronizacją do IndexedDB.
    */
 
